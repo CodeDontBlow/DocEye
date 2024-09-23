@@ -6,3 +6,37 @@
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
+# Ignorar arquivos do sistema do Windows
+NTUSER.DAT*
+ntuser.dat.LOG1
+ntuser.dat.LOG2
+ntuser.ini
+# Ignorar arquivos e pastas de configuração local e do sistema
+*.log
+*.tmp
+*.dat
+*.bak
+.DS_Store
+
+# Ignorar arquivos e diretórios do sistema operacional Windows
+NTUSER.DAT*
+ntuser.dat.LOG1
+ntuser.dat.LOG2
+ntuser.ini
+
+# Ignorar diretórios específicos do sistema Windows
+Ambiente de Impressão/
+Ambiente de Rede/
+Configurações Locais/
+Cookies/
+Dados de Aplicativos/
+Menu Iniciar/
+Meus Documentos/
+Modelos/
+Recent/
+SendTo/
+
+# Ignorar configurações de editores e IDEs
+.vscode/
+.idea/
+
