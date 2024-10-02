@@ -6,7 +6,7 @@
 
 ## 📌 Tema
 
-Muitas empresas lidam com milhares de documentos diariamente, como currículos, contas, notas fiscais e assim por diante. Porém, extrair informações destes documentos é uma atividade difícil que depende da atividade humana (mais lenta que computadores) pois apenas retirar o texto pode não ser suficiente visto que as informações dependem do layout visual. O objetivo deste API é desenvolver um software para automatizar a extração de informações de documentos usando modelos de linguagem e visão.
+Muitas empresas lidam com milhares de documentos diariamente, como currículos, contas, notas fiscais e assim por diante. Porém, extrair informações destes documentos é uma atividade difícil que depende da atividade humana (mais lenta que computadores) pois apenas retirar o texto pode não ser suficiente visto que as informações dependem do layout visual.
 
 ---
 
@@ -21,8 +21,8 @@ Muitas empresas lidam com milhares de documentos diariamente, como currículos, 
 | Sprint            | Início     | Status       |
 | ----------------- | ---------- | ------------ |
 | Kick Off          | 29/08/2024 | Concluído    |
-| 01                | 09/09/2024 | Em progresso |
-| 02                | 30/09/2024 | A fazer      |
+| 01                | 09/09/2024 | Concluído |
+| 02                | 30/09/2024 | Em progresso     |
 | 03                | 21/10/2024 | A fazer      |
 | 04                | 11/11/2024 | A fazer      |
 | Feira de Soluções | 12/12/2024 | A fazer      |
@@ -36,71 +36,54 @@ Muitas empresas lidam com milhares de documentos diariamente, como currículos, 
 
 ---
 
-## 📝 Requisitos Funcionais e Não Funcionais
+## 📝 Levantamento de Requisitos
 
-### Requisitos Funcionais ⚙️
-<!-- - O sistema deve permitir a visualização, leitura e alteração de dados armazenados.
-- O usuário deve ser capaz de inserir manualmente ou carregar documentos através de um "scanner".
-- A interface gráfica deve ser intuitiva e minimalista.
-- O sistema deve gerar relatórios de dados processados. -->
+<a id="requisitos"></a>
 
-### Requisitos Não Funcionais 📋
-<!-- - O tempo de resposta da interface deve ser inferior a n segundos para qualquer ação.
-- Os dados dos documentos devem ser armazenados de forma segura, utilizando (criptografia).
-- Utilizar somente modelos opensource rodando local
-- A solução deve ser escalável, suportando a adição de novos módulos de leitura e IA no futuro. -->
-- Documentação completa
+<div align="center">
 
----
+|          ID           |                     Descrição                      |         Requisito          |
+| :-------------------: | :----------------------------------------------------------: | :-------------: |
+| RQ01 | O usuário poderá submeter documentos para modelos de linguagem e visão. |Funcional|
+| RQ02 | O software deverá tratar a saída dada por esses modelos.|Funcional|
+| RQ03 | Criar uma interface para cadastrar documentos.|Funcional|
+| RQ04 | Criar uma interface para para exibir resultados. |Funcional|
+| RQ05 | O usuário poderá cadastrar informações extraídas em um banco de dados relacional. |Funcional|
+| RQ06 | O usuário poderá recuperar informações do banco de dados. |Funcional|
+| RQ07 | O usuário poderá editar informações do banco de dados. |Funcional|
+| RQ08 | O usuário poderá deletar informações do banco de dados. |Funcional|
+| RQ09 | O software não poderá utilizar nenhuma API externa. |Não Funcional|
+| RQ10 | A aplicação precisa rodar localmente na máquina. |Não Funcional|
+| RQ11 | A aplicação deve conter uma interface minimalista e intuitiva. |Não Funcional|
+
+</div>
+
 
 ## 🏗️ Arquitetura do Sistema
 
 O sistema será baseado em uma arquitetura de **camadas**, onde cada parte desempenha um papel específico no processo:
 
-- **Frontend (Interface Gráfica)**: Desenvolvido em Java com uso de bibliotecas gráficas (JavaFX ou Swing), permitindo uma interação amigável para o usuário final.
-- **Backend**: Responsável pelo processamento de dados, comunicação com o banco de dados (MySQL), e integração com a inteligência artificial (XYZ/XY/ZX/X).
+- **Frontend (Interface Gráfica)**: Desenvolvido em Java com uso de bibliotecas gráficas, permitindo uma interação amigável para o usuário final.
+- **Backend**: Responsável pelo processamento de dados, comunicação com o banco de dados (MySQL), e integração com a inteligência artificial.
 - **IA/Leitura de Documentos**: Utilização de modelos treinados para a leitura automática de documentos e reconhecimento de caracteres.
 - **Banco de Dados**: MySQL para armazenar os dados dos documentos, usuários e logs do sistema.
 
-
-### Diagrama de Arquitetura 📊
-
-
 ---
-
-## 📚 Competências desenvolvidas
-
-### 💻 Hard Skills
-
-Habilidades técnicas desenvolvidas:
 
 - Conhecimento em ferramentas:
     - IntelliJ IDEA
     - NetBeans
     - Ollama
     - Ollama4j
-    - POO(Programação Orientada a Objetos)
-    - Java
+    - Java e POO
     - MySQL
     - GitHub(Documentação)
-    - Git(Workflow)
+    - Git e Gitflow(Workflow)
     - Scrum
     - Draw.io
-<!-- Diagramas -->
+    - Diagramas 
 - Gestão de projetos;
 - Arquitetura de software
-
-### 🌱 Soft Skills
-
-Habilidades interpessoais desenvolvidas:
-
-- Resolução de conflitos;
-- Auto-Gerenciamento
-- Trabalho em equipe.
-- Adaptabilidade;
-- Comunicação clara e eficaz;
-
----
 
 ## 🛠️ Tecnologias Utilizadas
 
@@ -109,16 +92,13 @@ Ferramentas e plataformas aplicadas no desenvolvimento do projeto:
 <!-- - Figma 🎨 -->
 - Git e GitHub 🐙
 - IntelliJ IDEA 🖥️
-- NetBeans 🔧
 - Java ☕
-<!-- - Java fx swing sla, não decidiram ainda sdihajiskd -->
-- Ollama 🧠 (Modelos de IA)
+- Ollama 🦙 (Modelos de IA)
 - MySQL 🗄️
 - Draw.io 📊
 - Markdown 📝
-- Trello
+- Trello 🔧
 - Google Sheets 📑
-- LifeAt
 
 ---
 
