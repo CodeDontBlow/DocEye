@@ -6,7 +6,7 @@
 
 ## 📌 Tema
 
-Muitas empresas lidam com milhares de documentos diariamente, como currículos, contas, notas fiscais e assim por diante. Porém, extrair informações destes documentos é uma atividade difícil que depende da atividade humana (mais lenta que computadores) pois apenas retirar o texto pode não ser suficiente visto que as informações dependem do layout visual. O objetivo deste API é desenvolver um software para automatizar a extração de informações de documentos usando modelos de linguagem e visão.
+Muitas empresas lidam com milhares de documentos diariamente, como currículos, contas, notas fiscais e assim por diante. Porém, extrair informações destes documentos é uma atividade difícil que depende da atividade humana (mais lenta que computadores) pois apenas retirar o texto pode não ser suficiente visto que as informações dependem do layout visual.
 
 ---
 
@@ -57,56 +57,33 @@ Muitas empresas lidam com milhares de documentos diariamente, como currículos, 
 | RQ11 | A aplicação deve conter uma interface minimalista e intuitiva. |Não Funcional|
 
 </div>
----
+
 
 ## 🏗️ Arquitetura do Sistema
 
 O sistema será baseado em uma arquitetura de **camadas**, onde cada parte desempenha um papel específico no processo:
 
-- **Frontend (Interface Gráfica)**: Desenvolvido em Java com uso de bibliotecas gráficas (JavaFX ou Swing), permitindo uma interação amigável para o usuário final.
-- **Backend**: Responsável pelo processamento de dados, comunicação com o banco de dados (MySQL), e integração com a inteligência artificial (XYZ/XY/ZX/X).
+- **Frontend (Interface Gráfica)**: Desenvolvido em Java com uso de bibliotecas gráficas, permitindo uma interação amigável para o usuário final.
+- **Backend**: Responsável pelo processamento de dados, comunicação com o banco de dados (MySQL), e integração com a inteligência artificial.
 - **IA/Leitura de Documentos**: Utilização de modelos treinados para a leitura automática de documentos e reconhecimento de caracteres.
 - **Banco de Dados**: MySQL para armazenar os dados dos documentos, usuários e logs do sistema.
 
-
-<!-- ### Diagrama de Arquitetura 📊 -->
-
-
 ---
-
-<!-- ## 📚 Competências desenvolvidas
-
-### 💻 Hard Skills
-
-Habilidades técnicas desenvolvidas:
 
 - Conhecimento em ferramentas:
     - IntelliJ IDEA
     - NetBeans
     - Ollama
     - Ollama4j
-    - POO(Programação Orientada a Objetos)
-    - Java
+    - Java e POO
     - MySQL
     - GitHub(Documentação)
-    - Git(Workflow)
+    - Git e Gitflow(Workflow)
     - Scrum
     - Draw.io
     - Diagramas 
 - Gestão de projetos;
 - Arquitetura de software
-
-### 🌱 Soft Skills
-
-Habilidades interpessoais desenvolvidas:
-
-- Resolução de conflitos;
-- Auto-Gerenciamento
-- Trabalho em equipe.
-- Adaptabilidade;
-- Comunicação clara e eficaz; -->
-
----
 
 ## 🛠️ Tecnologias Utilizadas
 
@@ -116,7 +93,7 @@ Ferramentas e plataformas aplicadas no desenvolvimento do projeto:
 - Git e GitHub 🐙
 - IntelliJ IDEA 🖥️
 - Java ☕
-- Ollama 🧠 (Modelos de IA)
+- Ollama 🦙 (Modelos de IA)
 - MySQL 🗄️
 - Draw.io 📊
 - Markdown 📝
