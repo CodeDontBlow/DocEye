@@ -132,7 +132,8 @@ What's the student's name in this school report?
 ### Resposta:
 The student's name in the school report is Mary Keele.
 
-![2 teste com IA](https://github.com/user-attachments/assets/ffcdd012-966d-44e0-9a32-c2317028f5cc)
+https://github.com/user-attachments/assets/18a4d340-38a7-483e-a762-f7f06d35e343
+
 
 ---
 
