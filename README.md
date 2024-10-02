@@ -124,6 +124,17 @@ Ferramentas e plataformas aplicadas no desenvolvimento do projeto:
 - Google Sheets 📑
 
 ---
+## Teste utilizando inteligência artificial
+
+### IA testada: Llama-13b
+### Prompt: 
+What's the student's name in this school report?
+### Resposta:
+The student's name in the school report is Mary Keele.
+
+![2 teste com IA](https://github.com/user-attachments/assets/ffcdd012-966d-44e0-9a32-c2317028f5cc)
+
+---
 
 ## 🏗️ Como Instalar e Executar o Projeto
 
