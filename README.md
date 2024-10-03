@@ -56,6 +56,14 @@ Muitas empresas lidam com milhares de documentos diariamente, como currículos, 
 | RQ10 | A aplicação precisa rodar localmente na máquina. |Não Funcional|
 | RQ11 | A aplicação deve conter uma interface minimalista e intuitiva. |Não Funcional|
 
+
+## Backlog do produto 
+![Backlog](https://photos.app.goo.gl/rpSN6m1yZponJFSC6)
+
+## Backlog da Sprint
+![Sprint](https://photos.app.goo.gl/MRpu7qi4v7PNWuiE9)
+
+
 </div>
 ---
 
