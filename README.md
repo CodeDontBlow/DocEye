@@ -58,7 +58,7 @@ Muitas empresas lidam com milhares de documentos diariamente, como currículos, 
 
 
 ## Backlog do produto 
-![Backlog](https://photos.app.goo.gl/rpSN6m1yZponJFSC6)
+![Backlog](https://photos.google.com/photo/AF1QipPd3de51G3ElYp8hQN7sThP_JbP6SkuU9YAJqGH)
 
 ## Backlog da Sprint
 ![Sprint](https://photos.app.goo.gl/MRpu7qi4v7PNWuiE9)
