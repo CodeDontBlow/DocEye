@@ -74,6 +74,27 @@ O sistema será baseado em uma arquitetura de **camadas**, onde cada parte desem
 
 ---
 
+<!-- ## 📚 Competências desenvolvidas
+
+### 💻 Hard Skills
+
+Habilidades técnicas desenvolvidas:
+
+- Conhecimento em ferramentas:
+    - IntelliJ IDEA
+    - NetBeans
+    - Ollama
+    - Ollama4j
+    - POO(Programação Orientada a Objetos)
+    - Java
+    - MySQL
+    - GitHub(Documentação)
+    - Git(Workflow)
+    - Scrum
+    - Draw.io
+    - Diagramas 
+- Gestão de projetos;
+- Arquitetura de software
 
 ### 🌱 Soft Skills
 
@@ -106,7 +127,7 @@ Ferramentas e plataformas aplicadas no desenvolvimento do projeto:
 ## Teste utilizando inteligência artificial
 
 ### IA testada: Llama-13b
-### Prompt:
+### Prompt: 
 What's the student's name in this school report?
 ### Resposta:
 The student's name in the school report is Mary Keele.
