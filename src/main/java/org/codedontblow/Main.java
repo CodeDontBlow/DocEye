@@ -1,8 +1,8 @@
 package org.codedontblow;
 
 import io.github.ollama4j.exceptions.OllamaBaseException;
-import services.InputDocuments;
-import services.OllamaApi;
+import org.codedontblow.services.InputDocuments;
+import org.codedontblow.services.OllamaApi;
 
 import java.io.IOException;
 

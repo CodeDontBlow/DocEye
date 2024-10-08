@@ -1,4 +1,4 @@
-package services;
+package org.codedontblow.services;
 
 import io.github.ollama4j.OllamaAPI;
 import io.github.ollama4j.exceptions.OllamaBaseException;
@@ -15,7 +15,7 @@ public class OllamaApi {
         String host = "http://localhost:11434/";
         String model = "moondream:latest";
         OllamaAPI ollamaAPI = new OllamaAPI(host);
-        ollamaAPI.setRequestTimeoutSeconds(600); //Tempo de espera para obter resposta
+        ollamaAPI.setRequestTimeoutSeconds(600);
 
         PromptBuilder boletimPrompt = new PromptBuilder()
                 .addLine("This document is a school report card.")

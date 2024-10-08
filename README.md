@@ -1,12 +1,17 @@
-# API-2 🚀
+# API-2 
+
+<div style="text-align: right;">
+    <img src="docs/logos/logo.png" alt="Logo" style="width: 200px;"/>
+</div>
+
 
 - 2º Semestre de 2024 -
 - Fatec São José dos Campos -
----
+
 
 ## 📌 Tema
 
-Muitas empresas lidam com milhares de documentos diariamente, como currículos, contas, notas fiscais e assim por diante. Porém, extrair informações destes documentos é uma atividade difícil que depende da atividade humana (mais lenta que computadores) pois apenas retirar o texto pode não ser suficiente visto que as informações dependem do layout visual. O objetivo deste API é desenvolver um software para automatizar a extração de informações de documentos usando modelos de linguagem e visão.
+Muitas empresas lidam com milhares de documentos diariamente, como currículos, contas, notas fiscais e assim por diante. Porém, extrair informações destes documentos é uma atividade difícil que depende da atividade humana (mais lenta que computadores) pois apenas retirar o texto pode não ser suficiente visto que as informações dependem do layout visual.
 
 ---
 
@@ -27,12 +32,15 @@ Muitas empresas lidam com milhares de documentos diariamente, como currículos, 
 | 04                | 11/11/2024 | A fazer      |
 | Feira de Soluções | 12/12/2024 | A fazer      |
 
-## 🛤️ Roadmap
+## Sprint 2. MVP (Minimum Viable Product)
 
-### Sprint 1. MVP (Minimum Viable Product)
-
+[//]: # (TEM QUE COLOCAR AS IMAGENS E O VIDEO DO MVP)
 - [x] 
 - []
+
+
+## 🛤️ Roadmap
+<img src="docs/Roadmap.png" alt="Roadmap" style="width: 90%;"/>
 
 ---
 
@@ -68,44 +76,6 @@ O sistema será baseado em uma arquitetura de **camadas**, onde cada parte desem
 - **IA/Leitura de Documentos**: Utilização de modelos treinados para a leitura automática de documentos e reconhecimento de caracteres.
 - **Banco de Dados**: MySQL para armazenar os dados dos documentos, usuários e logs do sistema.
 
-
-<!-- ### Diagrama de Arquitetura 📊 -->
-
-
----
-
-<!-- ## 📚 Competências desenvolvidas
-
-### 💻 Hard Skills
-
-Habilidades técnicas desenvolvidas:
-
-- Conhecimento em ferramentas:
-    - IntelliJ IDEA
-    - NetBeans
-    - Ollama
-    - Ollama4j
-    - POO(Programação Orientada a Objetos)
-    - Java
-    - MySQL
-    - GitHub(Documentação)
-    - Git(Workflow)
-    - Scrum
-    - Draw.io
-    - Diagramas 
-- Gestão de projetos;
-- Arquitetura de software
-
-### 🌱 Soft Skills
-
-Habilidades interpessoais desenvolvidas:
-
-- Resolução de conflitos;
-- Auto-Gerenciamento
-- Trabalho em equipe.
-- Adaptabilidade;
-- Comunicação clara e eficaz; -->
-
 ---
 
 ## 🛠️ Tecnologias Utilizadas
@@ -124,18 +94,7 @@ Ferramentas e plataformas aplicadas no desenvolvimento do projeto:
 - Google Sheets 📑
 
 ---
-## Teste utilizando inteligência artificial
 
-### IA testada: Llama-13b
-### Prompt: 
-What's the student's name in this school report?
-### Resposta:
-The student's name in the school report is Mary Keele.
-
-https://github.com/user-attachments/assets/18a4d340-38a7-483e-a762-f7f06d35e343
-
-
----
 
 ## 🏗️ Como Instalar e Executar o Projeto
 
@@ -146,7 +105,7 @@ https://github.com/user-attachments/assets/18a4d340-38a7-483e-a762-f7f06d35e343
 - **Git**: Para clonar o repositório.
 - **IDE**: Como IntelliJ IDEA ou NetBeans.
 
-### Passos de Instalação:
+<!-- ### Passos de Instalação: -->
 
 
 
@@ -172,3 +131,4 @@ https://github.com/user-attachments/assets/18a4d340-38a7-483e-a762-f7f06d35e343
 | Vanessa da Costa | Dev Team | Dev Team | [![GitHub](https://img.shields.io/badge/GitHub-111217?style=flat-square&logo=github&logoColor=white)](https://github.com/Doryumi) | 
 | Henrique Tadeu | Dev Team | Dev Team | [![GitHub](https://img.shields.io/badge/GitHub-111217?style=flat-square&logo=github&logoColor=white)](https://github.com/henrySilverIX) | 
 
+<img src="docs/logos/logo2preta.png" alt="Logo Preta" width="200" style="margin-left: 25%;"/>
