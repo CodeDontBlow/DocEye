@@ -1,4 +1,5 @@
 create database docky;
+use docky;
 
 create table candidato(
    UniqueID int primary key ,
@@ -26,4 +27,10 @@ create table curriculo(
     idiomas varchar(100),
     foreign key (UniqueID) references candidato(UniqueID)
 );
+
+
+select * from candidato;
+select * from boletim;
+select * from curriculo;
+
 
