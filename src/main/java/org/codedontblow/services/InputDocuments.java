@@ -1,4 +1,4 @@
-package org.codedontblow.util;
+package org.codedontblow.services;
 
 import javax.swing.*;
 import java.io.File;
