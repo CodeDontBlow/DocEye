@@ -1,6 +1,8 @@
 package org.codedontblow;
 
 import io.github.ollama4j.exceptions.OllamaBaseException;
+import org.codedontblow.dao.CandidatoDAO;
+import org.codedontblow.model.Candidato;
 import org.codedontblow.services.InputDocuments;
 import org.codedontblow.services.OllamaApi;
 

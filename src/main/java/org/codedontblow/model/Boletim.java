@@ -8,16 +8,19 @@ public class Boletim {
     private String escola;
     private double notaPortugues;
     private double notaMatematica;
+    private int candidatoID;
+
 
     //Constructor
     public Boletim() {
     }
 
-    public Boletim(String matricula, String escola, double notaPortugues, double notaMatematica) {
+    public Boletim(String matricula, String escola, double notaPortugues, double notaMatematica, int candidatoID) {
         this.matricula = matricula;
         this.escola = escola;
         this.notaPortugues = notaPortugues;
         this.notaMatematica = notaMatematica;
+        this.candidatoID = candidatoID;
     }
 
 

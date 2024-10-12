@@ -2,7 +2,7 @@ create database docky;
 use docky;
 
 create table candidato(
-   UniqueID int primary key ,
+   UniqueID int auto_increment primary key ,
    nome varchar(100),
    tipo_doc varchar(10)
 );

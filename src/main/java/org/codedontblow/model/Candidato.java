@@ -11,11 +11,10 @@ public class Candidato {
     public Candidato() {
     }
 
-    public Candidato(String nome, String tipoDoc) {
+    public Candidato( String nome, String tipoDoc) {
         this.nome = nome;
         this.tipoDoc = tipoDoc;
     }
-
 
     //Métodos getter and setter
 

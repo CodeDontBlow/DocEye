@@ -11,6 +11,7 @@ public class Curriculo {
     private String endereco;
     private String competencias;
     private String idiomas;
+    private int candidatoID;
 
     //Constructor
 
@@ -18,7 +19,7 @@ public class Curriculo {
     public Curriculo() {
     }
 
-    public Curriculo(String numeroTelefone, String email, String linkedin, String portifolio, String endereco, String competencias, String idiomas) {
+    public Curriculo(String numeroTelefone, String email, String linkedin, String portifolio, String endereco, String competencias, String idiomas, int candidatoID) {
         this.numeroTelefone = numeroTelefone;
         this.email = email;
         this.linkedin = linkedin;
@@ -26,6 +27,7 @@ public class Curriculo {
         this.endereco = endereco;
         this.competencias = competencias;
         this.idiomas = idiomas;
+        this.candidatoID = candidatoID;
     }
 
 
