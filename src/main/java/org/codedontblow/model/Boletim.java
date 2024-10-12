@@ -9,6 +9,17 @@ public class Boletim {
     private double notaPortugues;
     private double notaMatematica;
 
+    //Constructor
+    public Boletim() {
+    }
+
+    public Boletim(String matricula, String escola, double notaPortugues, double notaMatematica) {
+        this.matricula = matricula;
+        this.escola = escola;
+        this.notaPortugues = notaPortugues;
+        this.notaMatematica = notaMatematica;
+    }
+
 
     //Métodos getter and setter
 

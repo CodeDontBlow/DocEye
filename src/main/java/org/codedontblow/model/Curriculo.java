@@ -12,6 +12,21 @@ public class Curriculo {
     private String competencias;
     private String idiomas;
 
+    //Constructor
+
+
+    public Curriculo() {
+    }
+
+    public Curriculo(String numeroTelefone, String email, String linkedin, String portifolio, String endereco, String competencias, String idiomas) {
+        this.numeroTelefone = numeroTelefone;
+        this.email = email;
+        this.linkedin = linkedin;
+        this.portifolio = portifolio;
+        this.endereco = endereco;
+        this.competencias = competencias;
+        this.idiomas = idiomas;
+    }
 
 
     //Métodos getter and setter
