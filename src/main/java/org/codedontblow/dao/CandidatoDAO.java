@@ -37,5 +37,19 @@ public class CandidatoDAO {
     }
 
     //Delete - deletar
+    public void deletar(Candidato candidato){
+        String sql = "DELETE FROM candidato WHERE id = ?";
+
+        try(PreparedStatement stmt = connection.prepareStatement(sql);){
+            stmt.setInt(1, candidato.getUniqueIDCandidato());
+            stmt.setString(2, candidato.getNome());
+            stmt.setString(3, candidato.getTipoDoc());
+            stmt.execute();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
 
 }
