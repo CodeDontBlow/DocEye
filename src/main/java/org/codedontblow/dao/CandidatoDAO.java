@@ -10,6 +10,7 @@ public class CandidatoDAO {
     private final Connection connection;
 
     public CandidatoDAO(){
+
         this.connection = new ConnectionFactory().getConnection();
     }
 
