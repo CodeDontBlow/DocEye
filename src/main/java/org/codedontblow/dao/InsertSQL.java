@@ -22,7 +22,7 @@ public class InsertSQL {
         PreparedStatement stmtBoletim = conn.prepareStatement(sqlBoletim);
 
         //Define o código SQL para inserção na tabela "Curriculo"
-        String sqlCurriculo = "INSERT INTO curriculo (telefone, email, linkedin, portifolio, endereco, competencias, idiomas) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String sqlCurriculo = "INSERT INTO curriculo (telefone, email, linkedin, portifolio, endereco, competencias, idiomas) VALUES (?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement stmtCurriculo = conn.prepareStatement(sqlCurriculo);
 
 
