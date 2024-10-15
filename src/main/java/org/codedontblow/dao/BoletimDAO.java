@@ -17,7 +17,7 @@ public class BoletimDAO {
 
     //Delete
     public void deletar(Boletim boletim) {
-        String sql = "DELETE FROM boletim WHERE id = ?";
+        String sql = "DELETE FROM boletim WHERE UniqueID = ? AND matricula = ? AND escola = ? AND nota_port = ? AND nota_mat = ? ";
 
         try (PreparedStatement stmt = connection.prepareStatement(sql);) {
             stmt.setInt(1, boletim.getUniqueIDBoletim());

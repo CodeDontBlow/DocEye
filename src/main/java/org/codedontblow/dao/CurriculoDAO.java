@@ -16,7 +16,7 @@ public class CurriculoDAO {
 
     //Delete
     public void deletar(Curriculo curriculo) {
-        String sql = "DELETE FROM curriculo WHERE id = ?";
+        String sql = "DELETE FROM curriculo WHERE UniqueID = ? AND telefone = ? AND email = ? AND linkedin = ? AND portifolio = ? AND endereco = ? AND competencias = ? AND idiomas = ?";
 
         try (PreparedStatement stmt = connection.prepareStatement(sql);) {
             stmt.setInt(1, curriculo.getUniqueIDCurriculo());
