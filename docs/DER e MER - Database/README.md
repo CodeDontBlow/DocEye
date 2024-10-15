@@ -1,0 +1,7 @@
+## DER e MER
+
+# Modelo Entidade-Relacionamento(MER)
+Modelo Entidade-Relacionamento (MER) é uma técnica de modelagem de dados que serve como base para a estruturação de informações em sistemas de banco de dados. O MER se concentra na representação conceitual das entidades, que são os objetos ou conceitos do mundo real, e suas interações. Cada entidade possui atributos que descrevem suas características, e o MER estabelece as relações entre essas entidades, como a associação entre um cliente e seus pedidos. Este modelo é fundamental na fase de planejamento, pois ajuda a entender e organizar a lógica dos dados de maneira abstrata, independente de qualquer sistema específico de gerenciamento de banco de dados.
+
+# Diagrama Entidade-Relacionamento(DER)
+Diagrama Entidade-Relacionamento (DER) é uma representação gráfica do MER, usada para visualizar a estrutura e as interações dos dados de forma prática. O DER traduz os conceitos do modelo em um formato visual, onde as entidades são representadas como retângulos, os atributos como elipses, e os relacionamentos como linhas que conectam as entidades. Essa representação facilita a compreensão de como os dados estão organizados e como se relacionam entre si, sendo uma ferramenta essencial na fase de design de banco de dados. O DER fornece um guia claro para a implementação dos dados em um sistema relacional, permitindo que desenvolvedores e analistas criem estruturas de banco de dados eficazes e coerentes.
