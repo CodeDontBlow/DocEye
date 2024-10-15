@@ -3,6 +3,7 @@ package org.codedontblow.dao;
 import org.codedontblow.factory.ConnectionFactory;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 //!!! FALTA RELACIONAR OS ID'S !!!
@@ -16,14 +17,14 @@ public class InsertSQL{
 
         //Define o código SQL para inserção na tabela "Candidato"
         String sqlCandidato = "INSERT INTO candidato (nome, tipo_doc) VALUES (?, ?)";
-        PreparedStatement stmtCandidato = conn.prepareStatement(sqlCandidato);
+        PreparedStatement stmtCandidato = conn.prepareStatement(sqlCandidato, PreparedStatement.RETURN_GENERATED_KEYS);
 
         //Define o código SQL para inserção na tabela "Boletim"
-        String sqlBoletim = "INSERT INTO boletim (matricula, escola, nota_port, nota_mat) VALUES (?, ?, ?, ?)";
+        String sqlBoletim = "INSERT INTO boletim (matricula, escola, nota_port, nota_mat, UniqueID) VALUES (?, ?, ?, ?, ?)";
         PreparedStatement stmtBoletim = conn.prepareStatement(sqlBoletim);
 
         //Define o código SQL para inserção na tabela "Curriculo"
-        String sqlCurriculo = "INSERT INTO curriculo (telefone, email, linkedin, portifolio, endereco, competencias, idiomas) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String sqlCurriculo = "INSERT INTO curriculo (telefone, email, linkedin, portifolio, endereco, competencias, idiomas, UniqueID) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement stmtCurriculo = conn.prepareStatement(sqlCurriculo);
 
         try {
@@ -34,17 +35,25 @@ public class InsertSQL{
             for (String linha : linhas) {
                 String[] atributos = linha.split(",");
 
-                stmtCandidato.setString(1, atributos[0]);
-                stmtCandidato.setString(2, tipoDoc);
-                stmtCandidato.addBatch();
+                stmtCandidato.setString(1, atributos[0]); //Nome do Candidato
+                stmtCandidato.setString(2, tipoDoc); //Tipo de Documento do Candidato
+                stmtCandidato.executeUpdate(); //Executando a Inserção dos Dados do Candidato
+
+                //Checando o ID (Chave) do Candidato
+                String candidatoID = ""; //Variável que receberá o valor do ID
+                ResultSet busca = stmtCandidato.getGeneratedKeys(); //Busca pelas chaves geradas automaticamente
+                //Verifica se há ao menos uma chave criada
+                if(busca.next()){
+                    candidatoID = String.valueOf(busca.getString(1)); //Adiciona o valor da chave à variável candidatoID
+                }
 
                 //Criando o código SQL para inserir todos os atributos presentes no output dentro da tabela boletim, caso o tipo de documento seja um boletim.
                 if (tipoDoc.equals("Boletim")) {
-
                     stmtBoletim.setString(1, atributos[1]); //Número da Matrícula
                     stmtBoletim.setString(2, atributos[2]); //Nome da Escola
                     stmtBoletim.setString(3, atributos[3]); //Nota de Português
                     stmtBoletim.setString(4, atributos[4]); //Nota de Matemática
+                    stmtBoletim.setString(5, candidatoID);  //UniqueID
                     stmtBoletim.addBatch(); //Armazena os comandos sql em um lote que será executado em breve
                 }
 
@@ -57,28 +66,28 @@ public class InsertSQL{
                     stmtCurriculo.setString(5, atributos[5]); //endereço
                     stmtCurriculo.setString(6, atributos[6]); //competencias
                     stmtCurriculo.setString(7, atributos[7]); //idiomas
+                    stmtCurriculo.setString(7, atributos[7]); //idiomas
+                    stmtCurriculo.setString(8, candidatoID);  //UniqueID
                     stmtCurriculo.addBatch(); //Armazena os comandos sql em um lote que será executado em breve
                 }
             }
 
-            //Inserindo no Banco de Dados
-
-            stmtCandidato.executeBatch();
+            //Fechando a conexão com a tabela Candidato
             stmtCandidato.close();
-            System.out.println("Candidato Cadastrado!");
+            System.out.println("Candidatos Cadastrado!");
 
             //Executa os códigos SQL, armazenados no lote, referentes a tabela boletim
             if (tipoDoc.equals("Boletim")) {
                 stmtBoletim.executeBatch();
                 stmtBoletim.close();
-                System.out.println("Inserção de Boletim Bem Sucedida!");
+                System.out.println("Inserção de Boletins Bem Sucedida!");
             }
 
             //Executa os códigos SQL, armazenados no lote, referentes a tabela curriculo
             else if (tipoDoc.equals("Curriculo")){
                 stmtCurriculo.executeBatch();
                 stmtCurriculo.close();
-                System.out.println("Inserção de Curriculo Bem Sucedida!");
+                System.out.println("Inserção de Curriculos Bem Sucedida!");
             }
         }
 
