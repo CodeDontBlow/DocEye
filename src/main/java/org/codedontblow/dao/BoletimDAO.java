@@ -7,6 +7,7 @@ import org.codedontblow.model.Candidato;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class BoletimDAO {
@@ -17,7 +18,34 @@ public class BoletimDAO {
         this.connection = new ConnectionFactory().getConnection();
     }
 
+    //Read - ler
+    public void ler() {
+        String sql = "SELECT * FROM boletim";
 
+        try {
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+
+            System.out.println("ID       | Matricula | Escola               | Nota Português | Nota Matemática ");
+            System.out.println("--------------------------------------------------------------------------------");
+
+            while (rs.next()) {
+                int id = rs.getInt("UniqueID");
+                String matricula = rs.getString("matricula");
+                String escola = rs.getString("escola");
+                Float nota_port = rs.getFloat("nota_port");
+                Float nota_mat = rs.getFloat("nota_mat");
+
+                System.out.printf("%-8d | %-9s | %-20s | %-14f | %-5f%n", id, matricula, escola, nota_port, nota_mat);
+            }
+
+            rs.close();
+            stmt.close();
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Erro ao ler dados: ", e);
+        }
+    }
 
 
     //Update - Atualizar
