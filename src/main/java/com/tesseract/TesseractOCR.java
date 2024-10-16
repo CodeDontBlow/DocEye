@@ -11,6 +11,11 @@ import java.io.IOException;
 
 public class TesseractOCR {
     public static void main(String[] args) {
+        String resultado = processarImagem("D:\\Tess4j\\Boletins\\Boletim-057.jpg");
+        System.out.println(resultado);
+    }
+
+    public static String processarImagem(String caminhoImagem) {
         ITesseract tesseract = new Tesseract();
 
         try {
@@ -18,14 +23,13 @@ public class TesseractOCR {
             tesseract.setDatapath("D:\\Tesseract-OCR\\tessdata");
 
             // Defina o idioma que deseja usar (ex: "por" para português)
-            tesseract.setLanguage("por"); //
+            tesseract.setLanguage("por");
 
-            // Caminho da imagem
-            String text = tesseract.doOCR(new File("D:\\Tess4j\\Boletins\\Boletim-020.jpg"));
-            System.out.println(text);
+            // Realiza a extração de texto da imagem
+            String text = tesseract.doOCR(new File(caminhoImagem));
 
             // Crie um FileWriter com um nome de arquivo específico
-            FileWriter fileWriter = new FileWriter("D:\\Tess4j\\Txt\\Boletim-020.txt");
+            FileWriter fileWriter = new FileWriter("D:\\Tess4j\\Txt\\Boletim-057.txt");
 
             // Envolva o FileWriter em BufferedWriter para escrita eficiente
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
@@ -36,10 +40,12 @@ public class TesseractOCR {
             // Feche o BufferedWriter para liberar os recursos
             bufferedWriter.close();
 
-            System.out.println("Texto extraído com sucesso!");
+            return "Texto extraído com sucesso!";
 
-        } catch (TesseractException | IOException e) {
-            e.printStackTrace();
+        } catch (TesseractException e) {
+            return "Erro ao processar a imagem com Tesseract: " + e.getMessage();
+        } catch (IOException e) {
+            return "Erro ao acessar o arquivo: " + e.getMessage();
         }
     }
 }
