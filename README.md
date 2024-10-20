@@ -44,6 +44,11 @@ Muitas empresas lidam com milhares de documentos diariamente, como currículos, 
 
 ---
 
+## 📈 Burndown 
+<img src="docs/Burndown.png" alt="Burndown" style="width: 80%;"/>
+
+---
+
 ## 📝 Levantamento de Requisitos
 
 <a id="requisitos"></a>
