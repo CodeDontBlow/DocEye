@@ -69,6 +69,7 @@ Muitas empresas lidam com milhares de documentos diariamente, como currículos, 
 | RQ10 | A aplicação precisa rodar localmente na máquina. |Não Funcional|
 | RQ11 | A aplicação deve conter uma interface minimalista e intuitiva. |Não Funcional|
 
+
 </div>
 ---
 
