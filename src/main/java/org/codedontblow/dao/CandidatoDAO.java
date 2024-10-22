@@ -18,9 +18,34 @@ public class CandidatoDAO {
     //Metodos do CRUD
     //Create - Criar
 
-
-
     //Read - ler
+    public void ler() {
+        String sql = "SELECT * FROM candidato";
+
+        try {
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+
+            System.out.println("ID       | Nome      | Tipo Doc");
+            System.out.println("-------------------------------");
+
+            while (rs.next()) {
+                int id = rs.getInt("UniqueID");
+                String nome = rs.getString("nome");
+                String tipoDoc = rs.getString("tipo_doc");
+
+                System.out.printf("%-8d | %-9s | %-10s%n", id, nome, tipoDoc);
+            }
+
+            rs.close();
+            stmt.close();
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Erro ao ler dados: ", e);
+        }
+    }
+
+
 
     //Update - Atualizar
     public void atualizar(Candidato candidato) {
