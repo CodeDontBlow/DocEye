@@ -1,28 +1,14 @@
 package org.codedontblow.dao;
 import org.codedontblow.factory.ConnectionFactory;
-import org.codedontblow.factory.ConnectionFactory;
 import org.codedontblow.model.Boletim;
-import org.codedontblow.model.Candidato;
-
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import org.codedontblow.factory.ConnectionFactory;
-import org.codedontblow.model.Boletim;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-
 public class BoletimDAO {
     private final Connection connection;
-
-    public BoletimDAO() {
-        this.connection = new ConnectionFactory().getConnection();
-    }
 
 
     //Delete
@@ -41,8 +27,6 @@ public class BoletimDAO {
             throw new RuntimeException(e);
         }
     }
-
-    private final Connection connection;
 
     public BoletimDAO() {
         this.connection = new ConnectionFactory().getConnection();

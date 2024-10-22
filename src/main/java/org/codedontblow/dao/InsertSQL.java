@@ -6,7 +6,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-//!!! FALTA RELACIONAR OS ID'S !!!
 public class InsertSQL{
 
     //Recebe como parâmetros de entrada o output fornecido pelo moondream e o tipo de documento que será cadastrado

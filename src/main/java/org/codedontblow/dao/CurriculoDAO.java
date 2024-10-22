@@ -1,22 +1,12 @@
 package org.codedontblow.dao;
 import org.codedontblow.factory.ConnectionFactory;
-import org.codedontblow.factory.ConnectionFactory;
-import org.codedontblow.model.Boletim;
-import org.codedontblow.model.Candidato;
 import org.codedontblow.model.Curriculo;
-
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import org.codedontblow.factory.ConnectionFactory;
-import org.codedontblow.model.Curriculo;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
 public class CurriculoDAO {
     private final Connection connection;
@@ -43,12 +33,6 @@ public class CurriculoDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    private final Connection connection;
-
-    public CurriculoDAO(Connection connection) {
-        this.connection = connection;
     }
 
 
