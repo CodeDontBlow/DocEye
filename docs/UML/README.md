@@ -1,0 +1,5 @@
+## Unified Modeling Language(UML)
+
+**UML (Unified Modeling Language)** é uma linguagem de modelagem usada para descrever e planejar sistemas de software. Criada nos anos 1990, ela ajuda a representar visualmente como um sistema funciona, mostrando suas partes principais e como elas interagem. Com diagramas simples, como os de classes e casos de uso, a UML facilita a comunicação entre os membros de uma equipe de desenvolvimento, tornando mais fácil entender os requisitos e as funcionalidades do software.
+
+A UML é especialmente útil em projetos grandes e complexos, pois ajuda a organizar ideias e a identificar possíveis problemas antes de o desenvolvimento começar. Ao usar uma linguagem visual comum, todos os envolvidos—desenvolvedores, analistas e clientes—podem ter uma visão clara do que o sistema deve fazer, tornando o processo de criação mais eficiente e colaborativo.
