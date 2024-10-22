@@ -10,13 +10,24 @@ public class CandidatoDAO {
     private final Connection connection;
 
     public CandidatoDAO(){
-
         this.connection = new ConnectionFactory().getConnection();
     }
 
 
     //Metodos do CRUD
     //Create - Criar
+    public void cadastrar(Candidato candidato) {
+        String sql = "INSERT INTO candidato (UniqueID, nome, tipo_doc) VALUES(?, ?, ?)";
+
+        try (PreparedStatement stmt = connection.prepareStatement(sql);) {
+            stmt.setInt(1, candidato.getUniqueIDCandidato());
+            stmt.setString(2, candidato.getNome());
+            stmt.setString(3, candidato.getTipoDoc());
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     //Read - ler
     public void ler() {
@@ -63,5 +74,19 @@ public class CandidatoDAO {
     }
 
     //Delete - deletar
+    public void deletar(Candidato candidato){
+        String sql = "DELETE FROM candidato WHERE UniqueID = ? AND nome = ? AND tipo_doc = ?";
+
+        try(PreparedStatement stmt = connection.prepareStatement(sql);){
+            stmt.setInt(1, candidato.getUniqueIDCandidato());
+            stmt.setString(2, candidato.getNome());
+            stmt.setString(3, candidato.getTipoDoc());
+            stmt.execute();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
 
 }

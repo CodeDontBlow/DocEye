@@ -42,4 +42,5 @@ public class Candidato {
     public void setTipoDoc(String tipoDoc) {
         this.tipoDoc = tipoDoc;
     }
+
 }
