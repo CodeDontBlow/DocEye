@@ -19,12 +19,12 @@ public class OllamaApi {
         OllamaAPI ollamaAPI = new OllamaAPI(host);
         ollamaAPI.setRequestTimeoutSeconds(600);
 
-        String text = processarImagem(filePath); // Métod do tesseract para OCR
+        String text = processarImagem(filePath); // Metodo do tesseract para OCR
 
         PromptBuilder boletimPrompt = new PromptBuilder()
                 .addLine(text) //Adiciona a extração do OCR para usar como auxilio do prompt
                 .addSeparator()
-                .addLine("what is in image?")
+                .addLine("What is this image?")
                 ;
 
         PromptBuilder curriculoPrompt = new PromptBuilder();

@@ -1,38 +1,21 @@
 package org.codedontblow.services;
 
-import javafx.application.Application;
-import javafx.stage.FileChooser;
-import javafx.stage.Stage;
-
+import javax.swing.*;
 import java.io.File;
 
-public class InputDocuments extends Application {
+public class InputDocuments {
+    public String selectFile(){
+        JFrame frame = new JFrame("Selecione um arquivo: ");
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
 
-    private String selectedFilePath;
+        int result = fileChooser.showOpenDialog(frame);
 
-    @Override
-    public void start(Stage stage) {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
-        fileChooser.setTitle("Selecione um arquivo");
-
-        File selectedFile = fileChooser.showOpenDialog(stage);
-        if (selectedFile != null) {
-            selectedFilePath = selectedFile.getAbsolutePath();
+        if(result == JFileChooser.APPROVE_OPTION){
+            File selectedFile = fileChooser.getSelectedFile();
+            return  selectedFile.getAbsolutePath();
+        } else {
+            return null;
         }
-
-        // Fechar o stage depois de selecionar o arquivo
-        stage.close();
-    }
-
-    public String selectFile() {
-        launch();
-        return selectedFilePath;
-    }
-
-    public static void main(String[] args) {
-        InputDocuments i1 = new InputDocuments();
-        String filePath = i1.selectFile();
-        System.out.println("Arquivo selecionado: " + filePath);
     }
 }
