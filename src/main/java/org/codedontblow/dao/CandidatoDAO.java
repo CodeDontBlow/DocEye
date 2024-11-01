@@ -14,7 +14,7 @@ public class CandidatoDAO {
     }
 
 
-    //Metodos do CRUD
+    //Métodos do CRUD
     //Create - Criar
     public void cadastrar(Candidato candidato) {
         String sql = "INSERT INTO candidato (UniqueID, nome, tipo_doc) VALUES(?, ?, ?)";
@@ -60,16 +60,17 @@ public class CandidatoDAO {
 
     //Update - Atualizar
     public void atualizar(Candidato candidato) {
-        String sql = "UPDATE cliente SET cliente_nome = ? WHERE cliente_codigo = ?";
+        String sql = "UPDATE candidato SET nome = ?, tipo_doc = ? WHERE UniqueID = ?";
 
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setString(1, candidato.getNome());
             stmt.setString(2, candidato.getTipoDoc());
-            stmt.execute();
-            stmt.close();
+            stmt.setInt(3, candidato.getUniqueIDCandidato());
+            stmt.executeUpdate();
+
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Erro ao atualizar a tabela candidato: ", e);
         }
     }
 

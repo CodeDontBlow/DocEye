@@ -1,5 +1,6 @@
 create database docky;
 use docky;
+show databases;
 
 create table candidato(
     UniqueID int primary key auto_increment,
@@ -7,7 +8,6 @@ create table candidato(
     tipo_doc varchar(10)
 );
 
-drop table candidato;
 
 create table boletim(
     UniqueID int primary key,
@@ -45,11 +45,29 @@ INSERT INTO boletim (UniqueID, matricula, escola, nota_port, nota_mat) VALUES
 INSERT INTO curriculo (UniqueID, telefone, email, linkedin, portifolio, endereco, competencias, idiomas) VALUES
     (1, '(11) 99999-1234', 'aurelio@gmail.com', 'linkedin.com/in/aurelio', 'aureliodesign.com',
     'Rua das Flores, 45 - São Paulo/SP', 'Design Gráfico, Adobe Photoshop, Illustrator', 'Português, Inglês'),
-
     (4, '(21) 98888-5678', 'valentina@yahoo.com', 'linkedin.com/in/valentina', 'valentinart.com.br',
     'Av. Brasil, 300 - Rio de Janeiro/RJ', 'Marketing Digital, SEO, Google Ads', 'Português, Espanhol, Inglês');
 
 
+
+/*Selecionar todos os itens*/
 select * from candidato;
 select * from boletim;
 select * from curriculo;
+
+/**/
+truncate table candidato;
+truncate table boletim;
+truncate table curriculo;
+
+
+/*Dropar uma tabela é excluí-la do banco de dados. Use com cautela*/
+DROP table candidato;
+DROP table boletim;
+DROP table curriculo;
+
+
+/*Deletar itens de tabelas com alguma característica*/
+DELETE from candidato WHERE UniqueID=6;
+
+
