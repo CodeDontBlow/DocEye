@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -9,22 +8,24 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <maven.compiler.source>22</maven.compiler.source>
-        <maven.compiler.target>22</maven.compiler.target>
+        <maven.compiler.source>21</maven.compiler.source> <!-- Defina como 21 para compatibilidade -->
+        <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <javafx.version>22</javafx.version> <!-- Centralize a versão do JavaFX -->
+        <javafx.maven.plugin.version>0.0.8</javafx.maven.plugin.version> <!-- Plugin versão 0.0.8 -->
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
-            <version>22</version> <!-- A mesma versão do javafx-controls -->
+            <version>${javafx.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
-            <version>22</version>
+            <version>${javafx.version}</version>
         </dependency>
 
         <dependency>
@@ -32,15 +33,17 @@
             <artifactId>ollama4j</artifactId>
             <version>1.0.84</version>
         </dependency>
+
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-jdk14</artifactId>
             <version>2.0.9</version>
         </dependency>
+
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.32</version> <!-- ou a versão mais recente -->
+            <version>8.0.32</version>
         </dependency>
 
         <dependency>
@@ -50,5 +53,18 @@
         </dependency>
 
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-maven-plugin</artifactId>
+                <version>${javafx.maven.plugin.version}</version>
+                <configuration>
+                    <mainClass>org.codedontblow.Main</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

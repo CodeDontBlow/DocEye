@@ -12,11 +12,12 @@ import org.codedontblow.dao.BoletimDAO;
 import org.codedontblow.dao.CandidatoDAO;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Objects;
 
 import static javafx.application.Application.launch;
 
 
-public class Main extends Application {
+public class Main extends Application{
     public void start(Stage stage) throws IOException {
         try{
             Parent root = FXMLLoader.load((getClass().getResource("EntradaArquivos.fxml")));
@@ -31,12 +32,12 @@ public class Main extends Application {
 
     public static void main(String[] args) throws OllamaBaseException, IOException, InterruptedException, SQLException {
         System.out.println("Hello CodeDontBlow!");
-        InputDocuments i1 = new InputDocuments();
+//        InputDocuments i1 = new InputDocuments();
 //        OllamaApi api = new OllamaApi();
 //        CandidatoDAO candidatos = new CandidatoDAO();
 //        BoletimDAO boletins = new BoletimDAO();
 //
-        String filePath = i1.selectFile();
+//        String filePath = i1.selectFile();
 //        String output = api.processFile(filePath);
 //
 //        candidatos.ler();

@@ -15,7 +15,7 @@
             <Cursor fx:constant="DEFAULT" />
          </cursor>
       </Button>
-      <Button alignment="CENTER" layoutX="499.0" mnemonicParsing="false" onAction="#trocaTela3" opacity="0.8" prefHeight="80.0" prefWidth="500.0" style="-fx-background-color: #0B0B0D;" text="Banco de Dados" textFill="WHITESMOKE">
+      <Button fx:id="switchTo3" onAction="#trocaTela3" alignment="CENTER" layoutX="499.0" mnemonicParsing="false" opacity="0.8" prefHeight="80.0" prefWidth="500.0" style="-fx-background-color: #0B0B0D;" text="Banco de Dados" textFill="WHITESMOKE">
          <font>
             <Font size="24.0" />
          </font>

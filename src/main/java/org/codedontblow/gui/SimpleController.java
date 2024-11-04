@@ -1,12 +1,12 @@
 package org.codedontblow.gui;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 
 //Essa classe Controller terá métodos mais simples, foi criada separadamente do controle de banco de dados para evitar que métodos simples se misturassem com métodos mais difíceis
@@ -27,10 +27,11 @@ public class SimpleController {
 
     //Troca para a tela de Banco de Dados
     public void trocaTela3(ActionEvent click) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("BancoDados.fxml"));
+        root = FXMLLoader.load(getClass().getResource("/org/codedontblow/BancoDados.fxml"));
         stage = (Stage)((Node)click.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
+
 }
