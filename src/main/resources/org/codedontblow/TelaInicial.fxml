@@ -5,10 +5,21 @@
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="org.codedontblow.gui.SimpleController"
-            prefHeight="400.0" prefWidth="600.0">
+            prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #45454D;" >
+    <children>
+        <Button>
+            <font>
+                <Font name="Segoe UI" size="15.0" />
+            </font>
+            <cursor>
+                <Cursor fx:constant="DEFAULT" />
+            </cursor>
+        </Button>
+    </children>
 
 </AnchorPane>
