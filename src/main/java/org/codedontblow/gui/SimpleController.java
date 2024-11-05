@@ -16,6 +16,16 @@ public class SimpleController {
     private Scene scene;
     private Parent root;
 
+
+    //Botao Entrar
+    public void trocaTela1(ActionEvent click) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("TelaInicial.fxml"));
+        stage = (Stage)((Node)click.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
     //Troca para a tela de Entrada de Arquivos
     public void trocaTela2(ActionEvent click) throws IOException {
         root = FXMLLoader.load(getClass().getResource("EntradaArquivos.fxml"));

@@ -12,7 +12,7 @@
             fx:controller="org.codedontblow.gui.SimpleController"
             prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #45454D;" >
     <children>
-        <Button>
+        <Button alignment="BOTTOM_LEFT" onAction="#trocaTela1" mnemonicParsing="false" prefHeight="600.0" prefWidth="500.0" style="-fx-background-color: #1C1C20;" text="Entrar" textFill="WHITESMOKE">
             <font>
                 <Font name="Segoe UI" size="15.0" />
             </font>
@@ -20,6 +20,12 @@
                 <Cursor fx:constant="DEFAULT" />
             </cursor>
         </Button>
+        <Label alignment="CENTER_LEFT" prefHeight="63.0" prefWidth="212.0" text="Bem-vindo ao DocEye" textFill="WHITE">
+            <font>
+                <Font name="Segoe UI" size="24.0" />
+            </font>
+        </Label>
+
     </children>
 
 </AnchorPane>
