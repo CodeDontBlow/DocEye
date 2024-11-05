@@ -7,6 +7,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import javax.swing.*;
+import javax.swing.text.html.ImageView;
+import java.awt.*;
 import java.io.IOException;
 
 //Essa classe Controller terá métodos mais simples, foi criada separadamente do controle de banco de dados para evitar que métodos simples se misturassem com métodos mais difíceis
@@ -43,5 +46,7 @@ public class SimpleController {
         stage.setScene(scene);
         stage.show();
     }
+
+
 
 }

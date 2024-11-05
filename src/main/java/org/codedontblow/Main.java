@@ -20,7 +20,7 @@ import static javafx.application.Application.launch;
 public class Main extends Application{
     public void start(Stage stage) throws IOException {
         try{
-            Parent root = FXMLLoader.load((getClass().getResource("EntradaArquivos.fxml")));
+            Parent root = FXMLLoader.load((getClass().getResource("TelaInicial.fxml")));
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
