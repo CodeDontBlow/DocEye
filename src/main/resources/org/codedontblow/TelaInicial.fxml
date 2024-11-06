@@ -11,17 +11,17 @@
 
 <AnchorPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #45454D;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.codedontblow.gui.SimpleController">
     <children>
-        <Button alignment="CENTER" contentDisplay="CENTER" layoutX="500.0" layoutY="576.0" lineSpacing="2.0" onAction="#trocaTela2" prefHeight="43.0" prefWidth="93.0" style="-fx-background-color: #1C1C20;" text="Entrar" textAlignment="CENTER" textFill="WHITESMOKE">
+        <Button alignment="CENTER" contentDisplay="CENTER" layoutX="44.0" layoutY="438.0" lineSpacing="2.0" onAction="#trocaTela2" prefHeight="43.0" prefWidth="93.0" style="-fx-background-color: #1C1C20;" text="Entrar" textAlignment="CENTER" textFill="WHITESMOKE">
             <font>
-                <Font name="Segoe UI" size="18.0" />
+                <Font name="Segoe UI" size="16.0" />
             </font>
             <cursor>
                 <Cursor fx:constant="DEFAULT" />
             </cursor>
         </Button>
-      <Label layoutX="44.0" layoutY="254.0" text="Bem-vindo ao DocEye" textFill="WHITE">
+      <Label layoutX="44.0" layoutY="271.0" text="Bem-vindo ao DocEye" textFill="WHITE">
          <font>
-            <Font name="Segoe UI" size="52.0" />
+            <Font name="Segoe UI Bold" size="52.0" />
          </font>
       </Label>
       <ImageView fx:id="myImageView" fitHeight="300.0" fitWidth="300.0" layoutX="632.0" layoutY="208.0" pickOnBounds="true" preserveRatio="true">
@@ -36,10 +36,15 @@
       </Label>
       <Label layoutX="44.0" layoutY="350.0" text="Software automatizador de processos seletivos" textFill="WHITE">
          <font>
-            <Font name="Segoe UI Italic" size="24.0" />
+            <Font name="Segoe UI" size="24.0" />
          </font>
       </Label>
       <BorderPane prefHeight="103.0" prefWidth="1000.0" style="-fx-background-color: #1C1C20;" />
+      <ImageView fitHeight="79.0" fitWidth="79.0" layoutX="907.0" layoutY="624.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@logo2preta.png" />
+         </image>
+      </ImageView>
     </children>
 
 </AnchorPane>

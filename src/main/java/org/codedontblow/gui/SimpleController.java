@@ -21,22 +21,14 @@ public class SimpleController {
 
 
     //Botao Entrar
-    public void trocaTela1(ActionEvent click) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("TelaInicial.fxml"));
+    public void trocaTela2(ActionEvent click) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("/org/codedontblow/EntradaArquivos.fxml"));
         stage = (Stage)((Node)click.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
 
-    //Troca para a tela de Entrada de Arquivos
-    public void trocaTela2(ActionEvent click) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("EntradaArquivos.fxml"));
-        stage = (Stage)((Node)click.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
 
     //Troca para a tela de Banco de Dados
     public void trocaTela3(ActionEvent click) throws IOException {
