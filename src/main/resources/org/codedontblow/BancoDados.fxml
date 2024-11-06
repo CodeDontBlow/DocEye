@@ -2,12 +2,13 @@
 
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #1C1C20;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.codedontblow.gui.DatabaseController">
     <children>
-        <Button fx:id="switchTo2" onAction="#trocaTela2" alignment="CENTER" mnemonicParsing="false" opacity="0.8" prefHeight="80.0" prefWidth="500.0" style="-fx-background-color: #0B0B0D;" text="Carregar Arquivos" textFill="WHITESMOKE">
+        <Button fx:id="switchTo2" alignment="CENTER" mnemonicParsing="false" onAction="#trocaTela2" opacity="0.8" prefHeight="80.0" prefWidth="500.0" style="-fx-background-color: #0B0B0D;" text="Carregar Arquivos" textFill="WHITESMOKE">
             <font>
                 <Font name="Segoe UI" size="24.0" />
             </font>
@@ -23,5 +24,10 @@
                 <Cursor fx:constant="DEFAULT" />
             </cursor>
         </Button>
+      <Label layoutX="20.0" layoutY="670.0" style="-fx-font-weight: normal;" text="\@2024CodeDontBlow" textFill="WHITESMOKE">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>
