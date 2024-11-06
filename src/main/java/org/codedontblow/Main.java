@@ -5,6 +5,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import org.codedontblow.services.InputDocuments;
 import org.codedontblow.services.OllamaApi;
@@ -23,6 +24,12 @@ public class Main extends Application{
             Parent root = FXMLLoader.load((getClass().getResource("EntradaArquivos.fxml")));
             Scene scene = new Scene(root);
             stage.setScene(scene);
+
+            Image appIcon = new Image("org/codedontblow/img/cdbLogoPreta.png");
+            stage.getIcons().add(appIcon);
+            stage.setResizable(false);
+            stage.setTitle("DocEye");
+
             stage.show();
         }
         catch(Exception e){
