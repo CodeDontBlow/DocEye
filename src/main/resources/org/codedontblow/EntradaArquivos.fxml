@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #1C1C20;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.codedontblow.gui.SimpleController">
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #1C1C20;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.codedontblow.gui.SimpleController">
    <children>
       <Button alignment="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="500.0" style="-fx-background-color: #1C1C20;" text="Carregar Arquivos" textFill="WHITESMOKE">
          <font>
@@ -25,7 +25,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="btnFileUpload" alignment="CENTER" layoutX="88.0" layoutY="232.0" mnemonicParsing="false" prefHeight="275.0" prefWidth="275.0" style="-fx-background-color: #45454d; -fx-background-radius: 10; -fx-border-radius: 10;" stylesheets="@EntradaArquivos.css" text="📂" textFill="WHITESMOKE">
+      <Button onAction="#selecionaArquivos" fx:id="btnFileUpload" alignment="CENTER" layoutX="88.0" layoutY="232.0" mnemonicParsing="false" prefHeight="275.0" prefWidth="275.0" style="-fx-background-color: #45454d; -fx-background-radius: 10; -fx-border-radius: 10;" stylesheets="@css/EntradaArquivos.css" text="📂" textFill="WHITESMOKE">
          <font>
             <Font size="96.0" />
          </font>
@@ -33,7 +33,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Label layoutX="102.0" layoutY="197.0" text="Carregue seus Arquivos Abaixo" textFill="WHITESMOKE">
+      <Label layoutX="102.0" layoutY="202.0" text="Carregue seus Arquivos Abaixo" textFill="WHITESMOKE">
          <font>
             <Font name="Segoe UI" size="18.0" />
          </font>
@@ -48,7 +48,7 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <TextArea fx:id="outputMessage" layoutX="434.0" layoutY="360.0" prefHeight="134.0" prefWidth="450.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 10; -fx-padding: 10 6; -fx-wrap-text: true;" stylesheets="@EntradaArquivos.css" text="ablabalblalaablabalblalaablabalblalaablabalblalaablab alblala&#10;">
+      <TextArea fx:id="outputMessage" layoutX="434.0" layoutY="360.0" prefHeight="134.0" prefWidth="450.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 10; -fx-padding: 10 6; -fx-wrap-text: true;" stylesheets="@css/EntradaArquivos.css" text="ablabalblalaablabalblalaablabalblalaablabalblalaablab alblala&#10;">
          <font>
             <Font size="14.0" />
          </font>

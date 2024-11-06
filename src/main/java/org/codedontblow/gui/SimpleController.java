@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
+import org.codedontblow.services.InputDocuments;
 
 import java.io.IOException;
 
@@ -35,6 +36,12 @@ public class SimpleController {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void selecionaArquivos(ActionEvent click){
+        InputDocuments i1 = new InputDocuments();
+        String filePath = i1.selectFile();
+        System.out.println(filePath);
     }
 
 }
