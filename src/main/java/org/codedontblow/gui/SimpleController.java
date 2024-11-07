@@ -1,5 +1,6 @@
 package org.codedontblow.gui;
 
+import io.github.ollama4j.exceptions.OllamaBaseException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 import org.codedontblow.services.InputDocuments;
+import org.codedontblow.services.OllamaApi;
 
 import java.io.IOException;
 
@@ -38,10 +40,16 @@ public class SimpleController {
         stage.show();
     }
 
-    public void selecionaArquivos(ActionEvent click){
-        InputDocuments i1 = new InputDocuments();
-        String filePath = i1.selectFile();
-        System.out.println(filePath);
+    @FXML
+    TextArea outputMessage;
+
+    public void selecionaArquivos(ActionEvent click) throws OllamaBaseException, IOException, InterruptedException {
+        InputDocuments explorerUI = new InputDocuments();
+        String filePath = explorerUI.selectFile();
+        outputMessage.setText("Extraindo Informações do Arquivo: " +filePath);
+
+        //String dockyOutput = OllamaApi.processFile(filePath);
+
     }
 
 }

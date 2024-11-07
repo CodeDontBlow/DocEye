@@ -2,11 +2,14 @@ package org.codedontblow;
 
 import io.github.ollama4j.exceptions.OllamaBaseException;
 import javafx.application.Application;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import org.codedontblow.gui.SimpleController;
 import org.codedontblow.services.InputDocuments;
 import org.codedontblow.services.OllamaApi;
 import org.codedontblow.dao.BoletimDAO;
@@ -43,6 +46,8 @@ public class Main extends Application{
 //        OllamaApi api = new OllamaApi();
 //        CandidatoDAO candidatos = new CandidatoDAO();
 //        BoletimDAO boletins = new BoletimDAO();
+
+
 //
 //        String filePath = i1.selectFile();
 //        String output = api.processFile(filePath);
