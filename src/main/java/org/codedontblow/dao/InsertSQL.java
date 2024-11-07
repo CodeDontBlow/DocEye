@@ -9,7 +9,7 @@ import java.sql.SQLException;
 public class InsertSQL{
 
     //Recebe como parâmetros de entrada o output fornecido pelo moondream e o tipo de documento que será cadastrado
-    public static void insereOutput(String llavaOutput, String tipoDoc) throws SQLException {
+    public static void insereOutput(String dockyOutput, String tipoDoc) throws SQLException {
 
         //Inicia uma conexão com o Banco de Dados e a chama de "conn"
         Connection conn = new ConnectionFactory().getConnection();
@@ -28,7 +28,7 @@ public class InsertSQL{
 
         try {
             //Tratamento do output do Moondream. Separando as linhas
-            String[] linhas = llavaOutput.split("/");
+            String[] linhas = dockyOutput.split("/");
 
             //Tratamento do output do Moondream. Separando os atributos de cada linha
             for (String linha : linhas) {
