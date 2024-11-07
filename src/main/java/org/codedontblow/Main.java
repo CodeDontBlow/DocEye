@@ -16,6 +16,8 @@ import java.util.Objects;
 
 import static javafx.application.Application.launch;
 
+import static org.codedontblow.services.TesseractOCR.findType;
+import static org.codedontblow.services.TesseractOCR.processarImagem;
 
 public class Main extends Application{
     public void start(Stage stage) throws IOException {
