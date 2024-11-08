@@ -20,7 +20,7 @@
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
-            <version>${javafx.version}</version>
+            <version> ${javafx.version}</version>
         </dependency>
         <!-- Dependência JavaFX FXML -->
         <dependency>

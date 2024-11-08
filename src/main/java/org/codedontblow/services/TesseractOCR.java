@@ -25,4 +25,28 @@ public class TesseractOCR {
             return "Erro ao processar a imagem com Tesseract: " + e.getMessage();
         }
     }
+
+    public static String findType(String tessOutput) {
+        tessOutput = tessOutput.toLowerCase();
+        String documento = null;
+
+        String[] boletimWords = {"boletim", "disciplinas", "subject",};
+        String[] curriculoWords = {"@", "contato", "idiomas", "experiencia", "formacao"};
+
+        for (String i : boletimWords) {
+            if (tessOutput.contains(i)) {
+                documento = "Boletim";
+                break;
+            }
+        }
+        if (documento == null) {
+            for (String j : curriculoWords) {
+                if (tessOutput.contains(j)) {
+                    documento = "Curriculo";
+                    break;
+                }
+            }
+        }
+        return documento;
+    }
 }
