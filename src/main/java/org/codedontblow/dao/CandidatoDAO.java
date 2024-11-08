@@ -76,7 +76,7 @@ public class CandidatoDAO {
 
     //Delete - deletar
     public void deletar(Candidato candidato){
-        String sql = "DELETE FROM candidato WHERE UniqueID = ? AND nome = ? AND tipo_doc = ?";
+        String sql = "DELETE FROM candidato WHERE UniqueID = ? OR nome = ? OR tipo_doc = ?";
 
         try(PreparedStatement stmt = connection.prepareStatement(sql);){
             stmt.setInt(1, candidato.getUniqueIDCandidato());

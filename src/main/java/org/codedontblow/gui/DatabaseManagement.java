@@ -1,4 +1,4 @@
-package org.codedontblow.GUI;
+package org.codedontblow.gui;
 
 import org.codedontblow.dao.CandidatoDAO;
 import org.codedontblow.model.Candidato;
@@ -60,7 +60,7 @@ public class DatabaseManagement extends JFrame{
                     candidato.setTipoDoc(textField3.getText());
 
                 if(textField2.getText().isBlank()){
-                    JOptionPane.showMessageDialog(null, "O campos não possuem nada, seu mula");
+                    JOptionPane.showMessageDialog(null, "O campos não possuem nada");
                 }
 
                 else{
@@ -81,7 +81,7 @@ public class DatabaseManagement extends JFrame{
                 candidatoDelete.setTipoDoc(textField3.getText());
 
                 if(textField2.getText().isBlank()){
-                    JOptionPane.showMessageDialog(null, "Nada foi apagado, seu mula");
+                    JOptionPane.showMessageDialog(null, "Nada foi apagado");
                 }
 
                 else{
@@ -100,7 +100,7 @@ public class DatabaseManagement extends JFrame{
                 candidatoAtualiza.setTipoDoc(textField3.getText());
 
                 if((textField1.getText().isBlank()) && (textField2.getText().isBlank()) && (textField3.getText().isBlank())){
-                    JOptionPane.showMessageDialog(null, "Preencha todos os campos, seu mula");
+                    JOptionPane.showMessageDialog(null, "Preencha todos os campos");
                 }
 
                 else{

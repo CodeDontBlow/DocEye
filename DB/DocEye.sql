@@ -55,7 +55,7 @@ select * from candidato;
 select * from boletim;
 select * from curriculo;
 
-/**/
+/*Apagar todos os itens da tabela*/
 truncate table candidato;
 truncate table boletim;
 truncate table curriculo;
