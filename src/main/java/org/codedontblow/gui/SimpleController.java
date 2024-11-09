@@ -11,7 +11,10 @@ import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 import org.codedontblow.services.InputDocuments;
 import org.codedontblow.services.OllamaApi;
+import javafx.stage.FileChooser;
 
+
+import java.io.File;
 import java.io.IOException;
 
 //Essa classe Controller terá métodos mais simples, foi criada separadamente do controle de banco de dados para evitar que métodos simples se misturassem com métodos mais difíceis
@@ -42,14 +45,43 @@ public class SimpleController {
 
     @FXML
     TextArea outputMessage;
+    //Metodo antigo de selecionamento de arquivos
+//    public void selecionaArquivos(ActionEvent click) throws OllamaBaseException, IOException, InterruptedException {
+//        InputDocuments explorerUI = new InputDocuments();
+//        String filePath = explorerUI.selectFile();
+//        outputMessage.setText("Extraindo Informações do Arquivo: " +filePath);
+//
+//        String dockyOutput = OllamaApi.processFile(filePath);
+//
+//    }
 
+
+    //Novo metodo de selecionamento de arquivos com a tela do windows explorer
     public void selecionaArquivos(ActionEvent click) throws OllamaBaseException, IOException, InterruptedException {
-        InputDocuments explorerUI = new InputDocuments();
-        String filePath = explorerUI.selectFile();
-        outputMessage.setText("Extraindo Informações do Arquivo: " +filePath);
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Selecione o Arquivo");
 
-        //String dockyOutput = OllamaApi.processFile(filePath);
+        // Configura filtro de extensão para facilitar a navegação
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Documentos", "*.pdf", "*.jpg"),
+                new FileChooser.ExtensionFilter("Todos os Arquivos", "*.*")
+        );
 
+        // Abre o FileChooser
+        File selectedFile = fileChooser.showOpenDialog(stage);
+
+        if (selectedFile != null) {
+            String filePath = selectedFile.getAbsolutePath();
+            outputMessage.setText("Extraindo Informações do Arquivo: " + filePath);
+            // Aqui você pode chamar métodos para processar o arquivo
+            String dockyOutput = OllamaApi.processFile(filePath);
+        } else {
+            outputMessage.setText("Nenhum arquivo selecionado.");
+        }
     }
+
+
+
+
 
 }

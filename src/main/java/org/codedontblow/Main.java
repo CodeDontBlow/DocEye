@@ -40,13 +40,13 @@ public class Main extends Application{
     }
 
     public static void main(String[] args) throws OllamaBaseException, IOException, InterruptedException, SQLException {
-        System.out.println("Hello CodeDontBlow!");
+//        System.out.println("Hello CodeDontBlow!");
 //        InputDocuments i1 = new InputDocuments();
 //        OllamaApi api = new OllamaApi();
 //        CandidatoDAO candidatos = new CandidatoDAO();
 //        BoletimDAO boletins = new BoletimDAO();
-
-
+//
+//
 //
 //        String filePath = i1.selectFile();
 //        String output = api.processFile(filePath);
