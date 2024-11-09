@@ -1,6 +1,9 @@
 package org.codedontblow.gui;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import org.codedontblow.dao.CandidatoDAO;
+import org.codedontblow.dao.CurriculoDAO;
 import org.codedontblow.model.Candidato;
 import javafx.scene.control.*;
 import javafx.event.ActionEvent;
@@ -14,6 +17,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.fxml.Initializable;
+import org.codedontblow.model.Curriculo;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import java.io.IOException;
 
@@ -52,8 +59,12 @@ public class DatabaseController {
     @FXML
     private Button btnDeletar;
 
+    @FXML
+    private Button btnBuscar;
+
     //Declaração do objeto candidatoDAO
     private final CandidatoDAO candidatoDAO = new CandidatoDAO();
+
 
 
     //Troca para a tela de Entrada de Arquivos
@@ -64,6 +75,57 @@ public class DatabaseController {
         stage.setScene(scene);
         stage.show();
     }
+
+
+
+    //Esse metodo serve para mostrar o banco de dados na lista assim que o usuário entra no gerenciamento
+    //do banco
+    @FXML
+    public void initialize() {
+        carregarCandidatos();
+    }
+
+
+
+
+
+
+    // Declaração do ListView. O ID do List View é listViewCandidatos
+    @FXML
+    private ListView<String> listViewCandidatos;
+
+
+
+    //Metodo para carregar todos os candidatos no list View
+    public void carregarCandidatos() {
+        List<Candidato> candidatos = candidatoDAO.listarTodos();
+        listViewCandidatos.getItems().clear(); // Limpa a lista antes de adicionar os novos itens
+
+        for (Candidato candidato : candidatos) {
+            String infoCandidato = "ID: " + candidato.getUniqueIDCandidato() +
+                    " | Nome: " + candidato.getNome() +
+                    " | Tipo Doc: " + candidato.getTipoDoc();
+            listViewCandidatos.getItems().add(infoCandidato);
+        }
+    }
+
+
+
+
+
+    //Metodo para buscar um candidato específico no banco de dados
+    public void buscar() {
+        String query = campoBuscar.getText();
+        List<Candidato> candidatos = candidatoDAO.buscarCandidatos(query);
+
+        listViewCandidatos.getItems().clear(); // Limpa a lista atual
+
+        for (Candidato candidato : candidatos) {
+            String info = "ID: " + candidato.getUniqueIDCandidato() + ", Nome: " + candidato.getNome() + ", Tipo Doc: " + candidato.getTipoDoc();
+            listViewCandidatos.getItems().add(info); // Adiciona o candidato no ListView
+        }
+    }
+
 
 
     //Os métodos CRUD estão abaixo
@@ -77,6 +139,10 @@ public class DatabaseController {
             candidatoDAO.cadastrar(candidato);
             clearFields();  // Limpa os campos após o cadastro
         }
+
+        //Esse metodo deve ser chamada ao final dos métodos CRUD para poder atualizar a lista imediatamente
+        //após cada alteração no banco de dados
+        carregarCandidatos();
     }
 
 
@@ -92,6 +158,10 @@ public class DatabaseController {
             candidatoDAO.atualizar(candidato);
             clearFields();  // Limpa os campos após a atualização
         }
+
+        //Esse metodo deve ser chamada ao final dos métodos CRUD para poder atualizar a lista imediatamente
+        //após cada alteração no banco de dados
+        carregarCandidatos();
     }
 
 
@@ -106,6 +176,10 @@ public class DatabaseController {
             candidatoDAO.deletar(candidato);
             clearFields();  // Limpa os campos após a exclusão
         }
+
+        //Esse metodo deve ser chamada ao final dos métodos CRUD para poder atualizar a lista imediatamente
+        //após cada alteração no banco de dados
+        carregarCandidatos();
     }
 
 

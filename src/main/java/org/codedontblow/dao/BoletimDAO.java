@@ -1,7 +1,8 @@
 package org.codedontblow.dao;
 import org.codedontblow.factory.ConnectionFactory;
 import org.codedontblow.model.Boletim;
-
+import java.util.ArrayList;
+import java.util.List;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -79,6 +80,30 @@ public class BoletimDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public Boletim buscarPorCandidatoID(int candidatoID) {
+        String sql = "SELECT * FROM boletim WHERE UniqueID = ?";
+        Boletim boletim = null;
+
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setInt(1, candidatoID);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                boletim = new Boletim();
+                boletim.setUniqueIDBoletim(rs.getInt("UniqueID"));
+                boletim.setMatricula(rs.getString("matricula"));
+                boletim.setEscola(rs.getString("escola"));
+                boletim.setNotaPortugues(rs.getDouble("nota_port"));
+                boletim.setNotaMatematica(rs.getDouble("nota_mat"));
+            }
+
+            rs.close();
+        } catch (SQLException e) {
+            throw new RuntimeException("Erro ao buscar boletim: ", e);
+        }
+        return boletim;
     }
 
 }

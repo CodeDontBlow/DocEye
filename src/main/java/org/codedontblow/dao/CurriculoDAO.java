@@ -1,7 +1,9 @@
 package org.codedontblow.dao;
 import org.codedontblow.factory.ConnectionFactory;
+import org.codedontblow.model.Candidato;
 import org.codedontblow.model.Curriculo;
-
+import java.util.ArrayList;
+import java.util.List;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

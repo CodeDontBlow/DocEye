@@ -30,6 +30,7 @@ create table curriculo(
     foreign key (UniqueID) references candidato(UniqueID)
 );
 
+/*Inserção de dados nas tabelas*/
 INSERT INTO candidato (nome, tipo_doc) VALUES
     ('Aurelio', 'curriculo'),
     ('Isadora', 'boletim'),
@@ -70,4 +71,7 @@ DROP table curriculo;
 /*Deletar itens de tabelas com alguma característica*/
 DELETE from candidato WHERE UniqueID=6;
 
-
+/*Selecionar linhas de uma tabela com base em colunas similares de uma outra tabela, usando o JOIN*/
+SELECT curriculo.UniqueID, curriculo.telefone, curriculo.email, curriculo.linkedin, curriculo.portifolio, curriculo.endereco, curriculo.competencias, curriculo.idiomas
+FROM curriculo
+INNER JOIN candidato ON curriculo.UniqueID=candidato.UniqueID;
