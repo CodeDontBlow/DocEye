@@ -1,4 +1,4 @@
-package org.codedontblow.gui;
+package org.codedontblow.GUI;
 
 import io.github.ollama4j.exceptions.OllamaBaseException;
 import javafx.event.ActionEvent;
