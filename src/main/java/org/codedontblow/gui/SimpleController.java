@@ -13,8 +13,10 @@ import org.codedontblow.services.InputDocuments;
 import org.codedontblow.services.OllamaApi;
 import javafx.stage.FileChooser;
 
-
 import java.io.File;
+import javax.swing.*;
+import javax.swing.text.html.ImageView;
+import java.awt.*;
 import java.io.IOException;
 
 //Essa classe Controller terá métodos mais simples, foi criada separadamente do controle de banco de dados para evitar que métodos simples se misturassem com métodos mais difíceis
@@ -25,9 +27,10 @@ public class SimpleController {
     private Scene scene;
     private Parent root;
 
-    //Troca para a tela de Entrada de Arquivos
+
+    //Botao Entrar
     public void trocaTela2(ActionEvent click) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("EntradaArquivos.fxml"));
+        root = FXMLLoader.load(getClass().getResource("/org/codedontblow/EntradaArquivos.fxml"));
         stage = (Stage)((Node)click.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -79,9 +82,4 @@ public class SimpleController {
             outputMessage.setText("Nenhum arquivo selecionado.");
         }
     }
-
-
-
-
-
 }

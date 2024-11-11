@@ -9,7 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import org.codedontblow.gui.SimpleController;
+import org.codedontblow.GUI.SimpleController;
 import org.codedontblow.services.InputDocuments;
 import org.codedontblow.services.OllamaApi;
 import org.codedontblow.dao.BoletimDAO;
@@ -23,7 +23,7 @@ import static javafx.application.Application.launch;
 public class Main extends Application{
     public void start(Stage stage) throws IOException {
         try{
-            Parent root = FXMLLoader.load((getClass().getResource("EntradaArquivos.fxml")));
+            Parent root = FXMLLoader.load((getClass().getResource("TelaInicial.fxml")));
             Scene scene = new Scene(root);
             stage.setScene(scene);
 
