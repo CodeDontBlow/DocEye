@@ -5,17 +5,6 @@ show databases;
 create table candidato(
     UniqueID int primary key auto_increment,
     nome varchar(100),
-    tipo_doc varchar(10)
-);
-
-
-create table boletim(
-    UniqueID int primary key,
-    matricula varchar(20),
-    escola varchar(100),
-    nota_port decimal(3,1) unsigned,
-    nota_mat decimal(3,1) unsigned,
-    foreign key (UniqueID) references candidato(UniqueID)
 );
 
 create table curriculo(
@@ -31,17 +20,12 @@ create table curriculo(
 );
 
 /*Inserção de dados nas tabelas*/
-INSERT INTO candidato (nome, tipo_doc) VALUES
-    ('Aurelio', 'curriculo'),
-    ('Isadora', 'boletim'),
-    ('Benjamin', 'boletim'),
-    ('Valentina', 'curriculo'),
-    ('Gael', 'boletim');
-
-INSERT INTO boletim (UniqueID, matricula, escola, nota_port, nota_mat) VALUES
-    (2, 'ISAD123', 'Colégio Horizonte', 8.5, 7.8),
-    (3, 'BENJ456', 'Escola Nova Era', 9.0, 6.5),
-    (5, 'GAEL789', 'Colégio Inovação', 7.3, 8.9);
+INSERT INTO candidato (nome) VALUES
+    ('Aurelio'),
+    ('Isadora'),
+    ('Benjamin'),
+    ('Valentina'),
+    ('Gael');
 
 INSERT INTO curriculo (UniqueID, telefone, email, linkedin, portifolio, endereco, competencias, idiomas) VALUES
     (1, '(11) 99999-1234', 'aurelio@gmail.com', 'linkedin.com/in/aurelio', 'aureliodesign.com',
@@ -53,18 +37,15 @@ INSERT INTO curriculo (UniqueID, telefone, email, linkedin, portifolio, endereco
 
 /*Selecionar todos os itens*/
 select * from candidato;
-select * from boletim;
 select * from curriculo;
 
 /*Apagar todos os itens da tabela*/
 truncate table candidato;
-truncate table boletim;
 truncate table curriculo;
 
 
-/*Dropar uma tabela é excluí-la do banco de dados. Use com cautela*/
+/*Dropar uma tabela e excluí-la do banco de dados. Use com cautela*/
 DROP table candidato;
-DROP table boletim;
 DROP table curriculo;
 
 
