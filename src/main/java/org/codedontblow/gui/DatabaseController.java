@@ -1,4 +1,4 @@
-package org.codedontblow.GUI;
+package org.codedontblow.gui;
 
 import org.codedontblow.dao.CandidatoDAO;
 import org.codedontblow.model.Candidato;
