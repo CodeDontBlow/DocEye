@@ -49,12 +49,12 @@ Muitas empresas lidam com milhares de documentos diariamente, como currículos, 
 
 
 ## 🛤️ Roadmap
-<img src="docs/Roadmap.png" alt="Roadmap" style="width: 70%;"/>
+<img src="docs/registros/Roadmap.png" alt="Roadmap" style="width: 70%;"/>
 
 ---
 
 ## 📈 Burndown 
-<img src="docs/Burndown.jpg" alt="Burndown" style="width: 70%;"/>
+<img src="docs/registros/Burndown.jpg" alt="Burndown" style="width: 70%;"/>
 
 ---
 
