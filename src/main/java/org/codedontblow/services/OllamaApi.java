@@ -15,7 +15,7 @@ import static org.codedontblow.services.TesseractOCR.processarImagem;
 public class OllamaApi {
     public static String processFile(String filePath) throws OllamaBaseException, IOException, InterruptedException {
         String host = "http://localhost:11434/";
-        String model = "moondream:latest";
+        String model = "docky:latest";
         OllamaAPI ollamaAPI = new OllamaAPI(host);
         ollamaAPI.setRequestTimeoutSeconds(600);
 
@@ -24,10 +24,7 @@ public class OllamaApi {
         PromptBuilder boletimPrompt = new PromptBuilder()
                 .addLine(text) //Adiciona a extração do OCR para usar como auxilio do prompt
                 .addSeparator()
-                .addLine("What is this image?")
                 ;
-
-        PromptBuilder curriculoPrompt = new PromptBuilder();
 
         OllamaResult result = ollamaAPI.generateWithImageFiles(model, //Nome do modelo de IA
                 boletimPrompt.build(),//O comando do prompt

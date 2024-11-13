@@ -1,9 +1,6 @@
 package org.codedontblow.GUI;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import org.codedontblow.dao.CandidatoDAO;
-import org.codedontblow.dao.CurriculoDAO;
 import org.codedontblow.model.Candidato;
 import javafx.scene.control.*;
 import javafx.event.ActionEvent;
@@ -16,10 +13,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import javafx.fxml.Initializable;
-import org.codedontblow.model.Curriculo;
-
-import java.util.ArrayList;
 import java.util.List;
 
 import java.io.IOException;
@@ -42,9 +35,6 @@ public class DatabaseController {
 
     @FXML
     private TextField campoNome;
-
-    @FXML
-    private TextField campoTipo_doc;
 
     @FXML
     private TextField campoBuscar;
@@ -103,8 +93,7 @@ public class DatabaseController {
 
         for (Candidato candidato : candidatos) {
             String infoCandidato = "ID: " + candidato.getUniqueIDCandidato() +
-                    " | Nome: " + candidato.getNome() +
-                    " | Tipo Doc: " + candidato.getTipoDoc();
+                    " | Nome: " + candidato.getNome();
             listViewCandidatos.getItems().add(infoCandidato);
         }
     }
@@ -121,7 +110,7 @@ public class DatabaseController {
         listViewCandidatos.getItems().clear(); // Limpa a lista atual
 
         for (Candidato candidato : candidatos) {
-            String info = "ID: " + candidato.getUniqueIDCandidato() + ", Nome: " + candidato.getNome() + ", Tipo Doc: " + candidato.getTipoDoc();
+            String info = "ID: " + candidato.getUniqueIDCandidato() + ", Nome: " + candidato.getNome();
             listViewCandidatos.getItems().add(info); // Adiciona o candidato no ListView
         }
     }
@@ -133,9 +122,8 @@ public class DatabaseController {
     public void cadastrar(){
         Candidato candidato = new Candidato();
         candidato.setNome(campoNome.getText());
-        candidato.setTipoDoc(campoTipo_doc.getText());
 
-        if (!campoNome.getText().isBlank() && !campoTipo_doc.getText().isBlank()) {
+        if (!campoNome.getText().isBlank()) {
             candidatoDAO.cadastrar(candidato);
             clearFields();  // Limpa os campos após o cadastro
         }
@@ -153,7 +141,6 @@ public class DatabaseController {
             Candidato candidato = new Candidato();
             candidato.setUniqueIDCandidato(id);
             candidato.setNome(campoNome.getText());
-            candidato.setTipoDoc(campoTipo_doc.getText());
 
             candidatoDAO.atualizar(candidato);
             clearFields();  // Limpa os campos após a atualização
@@ -187,7 +174,6 @@ public class DatabaseController {
     private void clearFields() {
         campoID_candidato.clear();
         campoNome.clear();
-        campoTipo_doc.clear();
         campoBuscar.clear();
     }
 

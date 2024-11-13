@@ -19,56 +19,25 @@ public class CandidatoDAO {
     //Métodos do CRUD
     //Create - Criar
     public void cadastrar(Candidato candidato) {
-        String sql = "INSERT INTO candidato (UniqueID, nome, tipo_doc) VALUES(?, ?, ?)";
+        String sql = "INSERT INTO candidato (UniqueID, nome) VALUES(?, ?)";
 
         try (PreparedStatement stmt = connection.prepareStatement(sql);) {
             stmt.setInt(1, candidato.getUniqueIDCandidato());
             stmt.setString(2, candidato.getNome());
-            stmt.setString(3, candidato.getTipoDoc());
             stmt.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
-    //Read - ler
-    public void ler() {
-        String sql = "SELECT * FROM candidato";
-
-        try {
-            PreparedStatement stmt = connection.prepareStatement(sql);
-            ResultSet rs = stmt.executeQuery();
-
-            System.out.println("ID       | Nome      | Tipo Doc");
-            System.out.println("-------------------------------");
-
-            while (rs.next()) {
-                int id = rs.getInt("UniqueID");
-                String nome = rs.getString("nome");
-                String tipoDoc = rs.getString("tipo_doc");
-
-                System.out.printf("%-8d | %-9s | %-10s%n", id, nome, tipoDoc);
-            }
-
-            rs.close();
-            stmt.close();
-
-        } catch (SQLException e) {
-            throw new RuntimeException("Erro ao ler dados: ", e);
-        }
-    }
-
-
-
     //Update - Atualizar
     public void atualizar(Candidato candidato) {
-        String sql = "UPDATE candidato SET nome = ?, tipo_doc = ? WHERE UniqueID = ?";
+        String sql = "UPDATE candidato SET nome = ? WHERE UniqueID = ?";
 
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setString(1, candidato.getNome());
-            stmt.setString(2, candidato.getTipoDoc());
-            stmt.setInt(3, candidato.getUniqueIDCandidato());
+            stmt.setInt(2, candidato.getUniqueIDCandidato());
             stmt.executeUpdate();
 
         } catch (SQLException e) {
@@ -78,12 +47,11 @@ public class CandidatoDAO {
 
     //Delete - deletar
     public void deletar(Candidato candidato){
-        String sql = "DELETE FROM candidato WHERE UniqueID = ? OR nome = ? OR tipo_doc = ?";
+        String sql = "DELETE FROM candidato WHERE UniqueID = ? OR nome = ?";
 
         try(PreparedStatement stmt = connection.prepareStatement(sql);){
             stmt.setInt(1, candidato.getUniqueIDCandidato());
             stmt.setString(2, candidato.getNome());
-            stmt.setString(3, candidato.getTipoDoc());
             stmt.execute();
 
         } catch (SQLException e) {
@@ -96,7 +64,7 @@ public class CandidatoDAO {
     //no gerenciador do nosso banco
     public List<Candidato> listarTodos() {
         List<Candidato> candidatos = new ArrayList<>();
-        String sql = "SELECT UniqueID, nome, tipo_doc FROM candidato";
+        String sql = "SELECT UniqueID, nome FROM candidato";
 
         try (PreparedStatement stmt = connection.prepareStatement(sql);
              ResultSet rs = stmt.executeQuery()) {
@@ -105,7 +73,6 @@ public class CandidatoDAO {
                 Candidato candidato = new Candidato();
                 candidato.setUniqueIDCandidato(rs.getInt("UniqueID"));
                 candidato.setNome(rs.getString("nome"));
-                candidato.setTipoDoc(rs.getString("tipo_doc"));
                 candidatos.add(candidato);
             }
         } catch (SQLException e) {
@@ -139,7 +106,6 @@ public class CandidatoDAO {
                 Candidato candidato = new Candidato();
                 candidato.setUniqueIDCandidato(rs.getInt("UniqueID"));
                 candidato.setNome(rs.getString("nome"));
-                candidato.setTipoDoc(rs.getString("tipo_doc"));
                 candidatos.add(candidato);
             }
         } catch (SQLException e) {

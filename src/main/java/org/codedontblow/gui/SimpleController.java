@@ -9,14 +9,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
-import org.codedontblow.services.InputDocuments;
 import org.codedontblow.services.OllamaApi;
 import javafx.stage.FileChooser;
 
 import java.io.File;
-import javax.swing.*;
-import javax.swing.text.html.ImageView;
-import java.awt.*;
 import java.io.IOException;
 
 //Essa classe Controller terá métodos mais simples, foi criada separadamente do controle de banco de dados para evitar que métodos simples se misturassem com métodos mais difíceis
@@ -48,15 +44,6 @@ public class SimpleController {
 
     @FXML
     TextArea outputMessage;
-    //Metodo antigo de selecionamento de arquivos
-//    public void selecionaArquivos(ActionEvent click) throws OllamaBaseException, IOException, InterruptedException {
-//        InputDocuments explorerUI = new InputDocuments();
-//        String filePath = explorerUI.selectFile();
-//        outputMessage.setText("Extraindo Informações do Arquivo: " +filePath);
-//
-//        String dockyOutput = OllamaApi.processFile(filePath);
-//
-//    }
 
 
     //Novo metodo de selecionamento de arquivos com a tela do windows explorer

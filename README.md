@@ -54,7 +54,7 @@ Muitas empresas lidam com milhares de documentos diariamente, como currículos, 
 ---
 
 ## 📈 Burndown 
-<img src="docs/Burndown.png" alt="Burndown" style="width: 70%;"/>
+<img src="docs/Burndown.jpg" alt="Burndown" style="width: 70%;"/>
 
 ---
 
