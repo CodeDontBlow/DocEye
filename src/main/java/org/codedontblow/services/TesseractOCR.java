@@ -14,12 +14,7 @@ public class TesseractOCR {
             // Defina o caminho para a pasta tessdata
             tesseract.setDatapath("C:\\Program Files\\Tesseract-OCR\\tessdata");
 
-
-            // Realiza a extração de texto da imagem
-            String txt = tesseract.doOCR(new File(filePath));
-
-
-            return txt;
+            return tesseract.doOCR(new File(filePath));
 
         } catch (TesseractException e) {
             return "Erro ao processar a imagem com Tesseract: " + e.getMessage();

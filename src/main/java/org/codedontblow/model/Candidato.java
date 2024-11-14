@@ -5,7 +5,6 @@ public class Candidato {
     //Atributos
     private int uniqueIDCandidato;
     private String nome;
-    private String tipoDoc;
 
     //Constructor
     public Candidato() {
@@ -13,7 +12,6 @@ public class Candidato {
 
     public Candidato(String nome, String tipoDoc) {
         this.nome = nome;
-        this.tipoDoc = tipoDoc;
     }
 
 
@@ -35,12 +33,5 @@ public class Candidato {
         this.nome = nome;
     }
 
-    public String getTipoDoc() {
-        return tipoDoc;
-    }
-
-    public void setTipoDoc(String tipoDoc) {
-        this.tipoDoc = tipoDoc;
-    }
 
 }
