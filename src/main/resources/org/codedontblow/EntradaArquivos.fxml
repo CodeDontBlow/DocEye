@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #1C1C20;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.codedontblow.GUI.SimpleController">
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #1C1C20;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.codedontblow.gui.SimpleController">
    <children>
       <Button alignment="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="500.0" style="-fx-background-color: #1C1C20;" text="Carregar Arquivos" textFill="WHITESMOKE">
          <font>

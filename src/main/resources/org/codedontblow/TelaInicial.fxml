@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #45454D;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.codedontblow.GUI.SimpleController">
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #45454D;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.codedontblow.gui.SimpleController">
     <children>
         <Button alignment="CENTER" contentDisplay="CENTER" layoutX="44.0" layoutY="438.0" lineSpacing="2.0" onAction="#trocaTela2" prefHeight="43.0" prefWidth="93.0" style="-fx-background-color: #1C1C20;" text="Entrar" textAlignment="CENTER" textFill="WHITESMOKE">
             <font>
