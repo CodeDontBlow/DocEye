@@ -16,7 +16,7 @@ public class Main extends Application{
 
     public void start(Stage stage) {
         try{
-            Parent root = FXMLLoader.load((Objects.requireNonNull(getClass().getResource("TelaInicial.fxml"))));
+            Parent root = FXMLLoader.load(getClass().getResource("/org/codedontblow/TelaInicial.fxml"));
             Scene scene = new Scene(root);
             stage.setScene(scene);
 
