@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #1C1C20;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.codedontblow.GUI.DatabaseController">
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #1C1C20;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.codedontblow.gui.DatabaseController">
     <children>
         <Button fx:id="switchTo2" alignment="CENTER" mnemonicParsing="false" onAction="#trocaTela2" opacity="0.8" prefHeight="80.0" prefWidth="500.0" style="-fx-background-color: #0B0B0D;" text="Carregar Arquivos" textFill="WHITESMOKE">
             <font>
