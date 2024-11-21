@@ -91,6 +91,26 @@ https://github.com/user-attachments/assets/8b01aa03-7700-40de-b9e9-e6c667162a6f
 ---
 </div>
 
+## 📑 Backlog do Produto
+
+<div align="center">
+
+| Rank  | Prioridade |                    User Story                    | Estimativa | Sprint |
+|-------|------------|--------------------------------------------------|------------|--------|
+| 1 | Alta | Como usuário, ter um modelo de inteligência artificial integrada na aplicação, para extração de informações presentes nos documentos | 13 | 1 |
+| 2 | Alta | Como usuário, poder carregar documentos, para que a aplicação extraia as informações importantes | 18 | 1 |
+| 3 | Alta | Como usuário, ter as informações extraídas armazenadas em um banco de dados, para permanência dos dados | 4 | 1 |
+| 4 | Alta| Como usuário, ter acesso e poder manipular o banco de dados, para exclusão e leitura das informações cadastradas | 13 | 2 |
+| 5 | Alta | Como usuário, cadastrar automaticamente as informações extraídas pela inteligência artificial, para automatização do processo | 8 | 2 |
+| 6 | Alta | Como usuário, poder acessar as funcionalidades da aplicação por meio de uma interface minimalista e intuitiva, para facilitação no uso do serviço | 18 | 3 |
+|   7   | Média | Como usuário, tratar a saída da inteligência artificial, para realizar a inserção automática | 13 | 2 |
+|   8   | Média | Como usuário, ter um modelo de inteligência artificial exclusivo da aplicação, para ter uma resposta ideal na extração | 18 | 3 |
+|   9   | Média | Como usuário, fazer filtragem dos currículos cadastrados no banco de dados, baseado em requisitos | 8 | 4 |
+|  10   | Baixa | Como usuário, ter garantia na segurança dos dados extraídos, para evitar ataques | 3 | 4 |
+|  11   | Baixa | Como usuário, ter um guia de instalação detalhado, para clarificar o processo de iniciação da aplicação | 18 | 4 |
+
+</div>
+
 
 ## 🏗️ Arquitetura do Sistema
 
