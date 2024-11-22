@@ -96,7 +96,7 @@ https://github.com/user-attachments/assets/8b01aa03-7700-40de-b9e9-e6c667162a6f
 <div align="center">
 
 | Rank  | Prioridade |                    User Story                    | Estimativa | Sprint |
-|-------|------------|--------------------------------------------------|------------|--------|
+|:-----:|:----------:|:------------------------------------------------:|:----------:|:------:|
 | 1 | Alta | Como usuário, ter um modelo de inteligência artificial integrada na aplicação, para extração de informações presentes nos documentos | 13 | 1 |
 | 2 | Alta | Como usuário, poder carregar documentos, para que a aplicação extraia as informações importantes | 18 | 1 |
 | 3 | Alta | Como usuário, ter as informações extraídas armazenadas em um banco de dados, para permanência dos dados | 4 | 1 |
