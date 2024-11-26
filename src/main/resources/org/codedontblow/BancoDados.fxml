@@ -28,15 +28,29 @@
                 <Cursor fx:constant="DEFAULT" />
             </cursor>
         </Button>
-      <Label fx:id="labelCandidato" layoutX="122.0" layoutY="186.0" text="Candidato" textFill="WHITE" />
-      <TextField fx:id="campoID_candidato" layoutX="63.0" layoutY="228.0" promptText="ID do Candidato" />
-      <TextField fx:id="campoNome" layoutX="63.0" layoutY="289.0" promptText="Nome" />
-      <Button fx:id="btnCadastrar" layoutX="115.0" layoutY="428.0" mnemonicParsing="false" onAction="#cadastrar" text="Cadastrar" />
-      <Label layoutX="408.0" layoutY="130.0" text="Buscar" textFill="WHITE" />
-      <TextField fx:id="campoBuscar" layoutX="517.0" layoutY="125.0" promptText="Buscar candidato" />
-      <Button fx:id="btnEditar" layoutX="812.0" layoutY="125.0" mnemonicParsing="false" onAction="#atualizar" text="Editar" />
-      <Button fx:id="btnDeletar" layoutX="894.0" layoutY="125.0" mnemonicParsing="false" onAction="#deletar" text="Deletar" />
-      <ListView fx:id="listViewCandidatos" layoutX="365.0" layoutY="228.0" prefHeight="408.0" prefWidth="604.0" />
-      <Button fx:id="btnBuscar" layoutX="728.0" layoutY="125.0" mnemonicParsing="false" onAction="#buscar" text="Buscar" />
+      <Label fx:id="labelCandidato" layoutX="827.0" layoutY="118.0" text="Candidato" textFill="WHITE" />
+      <TextField fx:id="campoUniqueID" layoutX="787.0" layoutY="163.0" promptText="ID do Candidato" />
+      <TextField fx:id="campoNome" layoutX="768.0" layoutY="281.0" promptText="Nome" />
+      <Button fx:id="btnCadastrar" layoutX="760.0" layoutY="620.0" mnemonicParsing="false" onAction="#cadastrar" text="Cadastrar" />
+      <TextField fx:id="campoBuscar" layoutX="17.0" layoutY="147.0" prefHeight="31.0" prefWidth="629.0" promptText="Procurar" />
+      <Button fx:id="btnEditar" layoutX="825.0" layoutY="209.0" mnemonicParsing="false" onAction="#atualizar" text="Editar" />
+      <Button fx:id="btnDeletar" layoutX="913.0" layoutY="209.0" mnemonicParsing="false" onAction="#deletar" text="Deletar" />
+      <Button fx:id="btnBuscar" layoutX="662.0" layoutY="147.0" mnemonicParsing="false" onAction="#Buscar" text="Buscar" />
+      <TableView fx:id="contentTable" layoutX="14.0" layoutY="197.0" prefHeight="454.0" prefWidth="712.0">
+        <columns>
+          <TableColumn fx:id="colunaUniqueID" prefWidth="57.0" text="ID" />
+          <TableColumn fx:id="colunaNome" prefWidth="106.0" text="Nome" />
+            <TableColumn fx:id="colunaTelefone" prefWidth="94.0" text="Telefone" />
+            <TableColumn fx:id="colunaEmail" prefWidth="102.0" text="Email" />
+            <TableColumn fx:id="colunaEndereco" prefWidth="101.0" text="Endereço" />
+            <TableColumn fx:id="colunaCompetencias" prefWidth="151.0" text="Competências" />
+            <TableColumn fx:id="colunaIdiomas" minWidth="0.0" prefWidth="100.0" text="Idiomas" />
+        </columns>
+      </TableView>
+      <TextField fx:id="campoTelefone" layoutX="768.0" layoutY="335.0" promptText="Telefone" />
+      <TextField fx:id="campoEmail" layoutX="768.0" layoutY="381.0" promptText="Email" />
+      <TextField fx:id="campoEndereco" layoutX="768.0" layoutY="424.0" promptText="Endereço" />
+      <TextField fx:id="campoCompetencias" layoutX="779.0" layoutY="469.0" promptText="Competências" />
+      <TextField fx:id="campoIdiomas" layoutX="768.0" layoutY="527.0" promptText="Idiomas" />
     </children>
 </AnchorPane>
