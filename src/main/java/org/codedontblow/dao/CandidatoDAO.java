@@ -127,7 +127,7 @@ public class CandidatoDAO {
 
 
 
-
+    //Métodos relacionados a busca do candidato
     // Buscar candidatos pelo ID do candidato
     public Candidato buscarPorID(int id) {
         String sql = "SELECT * FROM candidato WHERE UniqueID = ?";
@@ -165,6 +165,46 @@ public class CandidatoDAO {
     }
 
 
+    // Buscar candidatos pela competência do candidato
+    public List<Candidato> buscarPorCompetencia(String competencia) {
+        List<Candidato> candidatos = new ArrayList<>();
+        String sql = "SELECT * FROM candidato WHERE competencias LIKE ?";
+
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setString(1, "%" + competencia + "%");
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                candidatos.add(mapearCandidato(rs));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Erro ao buscar candidatos por competencia: ", e);
+        }
+        return candidatos;
+    }
+
+    // Buscar candidatos pelo idioma
+    public List<Candidato> buscarPorIdioma(String idioma) {
+        List<Candidato> candidatos = new ArrayList<>();
+        String sql = "SELECT * FROM candidato WHERE idiomas LIKE ?";
+
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setString(1, "%" + idioma + "%");
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                candidatos.add(mapearCandidato(rs));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Erro ao buscar candidatos por idioma: ", e);
+        }
+        return candidatos;
+    }
+
+
+
+
+
     public List<Candidato> buscarTodos() {
         List<Candidato> candidatos = new ArrayList<>();
         String sql = "SELECT * FROM Candidato";
@@ -190,10 +230,5 @@ public class CandidatoDAO {
 
         return candidatos;
     }
-
-
-
-
-
 
 }
