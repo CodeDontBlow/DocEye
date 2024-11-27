@@ -16,6 +16,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import java.io.IOException;
@@ -95,17 +97,18 @@ public class DatabaseController {
                 preencherCampos(newSelection);
             }
         });
+
+        // Carregar dados do banco de dados ao inicializar a tela
+        carregarDadosIniciais();
+
     }
 
-    //Serve para preencher os campos de textos com informações ao clicar na tabela
-    private void preencherCampos(Candidato candidato) {
-        campoUniqueID.setText(String.valueOf(candidato.getUniqueID()));
-        campoNome.setText(candidato.getNome());
-        campoTelefone.setText(String.valueOf(candidato.getNumeroTelefone()));
-        campoEmail.setText(String.valueOf(candidato.getEmail()));
-        campoEndereco.setText(String.valueOf(candidato.getEndereco()));
-        campoCompetencias.setText(candidato.getCompetencias());
-        campoIdiomas.setText(candidato.getIdiomas());
+
+    private void carregarDadosIniciais() {
+        List<Candidato> candidatos = candidatoDAO.listarTodos(); // Busca todos os candidatos no banco de dados
+        carregarTabela(candidatos); // Carrega os dados na tabela
+
+
     }
 
     public void busca(String s){
@@ -126,38 +129,58 @@ public class DatabaseController {
     }
 
 
+
     //Metodo buscar
     @FXML
     private void Buscar() {
-        String filtro = campoBuscar.getText().trim(); // Filtra por nome ou ID
+        String filtro = campoBuscar.getText().trim(); // Filtra por qualquer critério
 
         if (!filtro.isEmpty()) {
-            System.out.println("Filtro de busca: " + filtro); // Depuração para ver o filtro inserido
-            List<Candidato> candidatos;
+            System.out.println("Filtro de busca: " + filtro); // Para depuração
+            List<Candidato> candidatos = new ArrayList<>();
 
             try {
-                // Tenta buscar por ID
+                // Tentativa de buscar por ID
                 int id = Integer.parseInt(filtro);
-                Candidato candidato = candidatoDAO.buscarPorID(id);; // Metodo que busca por ID
-
+                Candidato candidato = candidatoDAO.buscarPorID(id); // Metodo que busca por ID
                 if (candidato != null) {
-                    carregarTabela(List.of(candidato)); // Se encontrou um candidato, carrega a tabela com ele
-                } else {
-                    showAlert("Atenção", "Nenhum aluno encontrado com o ID especificado.");
+                    carregarTabela(List.of(candidato));
+                    return;
                 }
-
             } catch (NumberFormatException e) {
-                // Caso não consiga converter para ID, busca por nome
-                candidatos = candidatoDAO.buscarPorNome(filtro); // Buscar por nome
+                System.out.println("O filtro não é um número. Tentando outros critérios...");
+            }
 
-                // Depuração para garantir que a lista de candidatos não está duplicada
-                System.out.println("candidatos encontrados: " + candidatos.size());
-                carregarTabela(candidatos); // Carregar a tabela com os resultados
+            // Buscar por Nome
+            List<Candidato> candidatosPorNome = candidatoDAO.buscarPorNome(filtro);
+            if (!candidatosPorNome.isEmpty()) {
+                candidatos.addAll(candidatosPorNome);
+            }
+
+            // Buscar por Competências
+            List<Candidato> candidatosPorCompetencia = candidatoDAO.buscarPorCompetencia(filtro);
+            if (!candidatosPorCompetencia.isEmpty()) {
+                candidatos.addAll(candidatosPorCompetencia);
+            }
+
+            // Buscar por Idiomas
+            List<Candidato> candidatosPorIdioma = candidatoDAO.buscarPorIdioma(filtro);
+            if (!candidatosPorIdioma.isEmpty()) {
+                candidatos.addAll(candidatosPorIdioma);
+            }
+
+            // Remover duplicatas (opcional)
+            candidatos = candidatos.stream().distinct().toList();
+
+            if (candidatos.isEmpty()) {
+                showAlert("Atenção", "Nenhum candidato encontrado com o critério especificado.");
+            } else {
+                carregarTabela(candidatos); // Carrega a tabela com os resultados
             }
         } else {
-            // Caso o campo de busca esteja vazio, mostra todos os candidatos
-            List<Candidato> candidatos = candidatoDAO.listarTodos(); // Chama o metodo para listar todos os candidatos
-            carregarTabela(candidatos); // Carrega todos os candidatos na tabela
+            // Caso o campo esteja vazio, lista todos os candidatos
+            List<Candidato> candidatos = candidatoDAO.listarTodos();
+            carregarTabela(candidatos);
         }
     }
 
@@ -176,13 +199,7 @@ public class DatabaseController {
     }
 
 
-
-
-
-
-
-
-    //Os métodos CRUD estão abaixo
+    //Os métodos CRUD, como cadastrar, atualizar e deletar estão abaixo
     //Metodo para cadastrar os dados no banco
     public void cadastrar(){
         Candidato candidato = new Candidato();
@@ -200,7 +217,6 @@ public class DatabaseController {
 
 
     // Metodo para atualizar as informações do candidato
-// Metodo para atualizar as informações do candidato
     public void atualizar() {
         if (!campoUniqueID.getText().isBlank()) {
             try {
@@ -268,6 +284,14 @@ public class DatabaseController {
     }
 
 
+    // Outros methods
+
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 
     // Limpar campos após as operações de CRUD
     private void clearFields() {
@@ -277,25 +301,15 @@ public class DatabaseController {
     }
 
 
-    // Outros methods
-
-
-    // Metodo para exibir mensagens de erro
-    private void showError(String title, String message) {
-        //Alert faz parte do java.scene.control
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
+    //Serve para preencher os campos de textos com informações ao clicar em uma linha na tabela
+    private void preencherCampos(Candidato candidato) {
+        campoUniqueID.setText(String.valueOf(candidato.getUniqueID()));
+        campoNome.setText(candidato.getNome());
+        campoTelefone.setText(String.valueOf(candidato.getNumeroTelefone()));
+        campoEmail.setText(String.valueOf(candidato.getEmail()));
+        campoEndereco.setText(String.valueOf(candidato.getEndereco()));
+        campoCompetencias.setText(candidato.getCompetencias());
+        campoIdiomas.setText(candidato.getIdiomas());
     }
-
-    private void showAlert(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(title);
-        alert.setContentText(message);
-        alert.showAndWait();
-    }
-
 
 }
