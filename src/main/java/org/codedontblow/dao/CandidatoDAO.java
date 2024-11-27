@@ -125,8 +125,16 @@ public class CandidatoDAO {
         return candidato_aux;
     }
 
+    public List<Candidato> buscarPorRequisito(String sqlQuery){
+        String sql = sqlQuery;
 
+        try(PreparedStatement stmt = connection.prepareStatement(sql)){
 
+        }
+        catch (SQLException e){
+            System.out.println("Erro na busca: " +e);
+        }
+    }
 
     // Buscar candidatos pelo ID do candidato
     public Candidato buscarPorID(int id) {

@@ -108,6 +108,23 @@ public class DatabaseController {
         campoIdiomas.setText(candidato.getIdiomas());
     }
 
+    public void busca(String s){
+        //Pega o que foi digitado no campo de busca e remove todos os espaços em branco
+        //String filtro = campoBuscar.getText().replaceAll("\\s","");
+        String filtro = s.replaceAll("\\s","");
+        if(filtro.isEmpty()){
+            List<Candidato> candidatos = candidatoDAO.listarTodos(); // Chama o metodo para listar todos os candidatos
+            carregarTabela(candidatos);
+        }
+        else{
+            String[] requisitos = filtro.split(",");
+            for(int i = 0 ; i < 3 ; i++){
+                System.out.println(requisitos[i]);
+            }
+        }
+
+    }
+
 
     //Metodo buscar
     @FXML

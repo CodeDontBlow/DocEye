@@ -34,7 +34,8 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Label layoutX="102.0" layoutY="202.0" text="Carregue seu Arquivo Abaixo" textFill="WHITESMOKE">
+      <Label layoutX="102.0" layoutY="202.0" text="Carregue seu Arquivo.
+       baixo" textFill="WHITESMOKE">
          <font>
             <Font name="Segoe UI" size="18.0" />
          </font>
