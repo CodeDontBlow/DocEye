@@ -6,8 +6,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import org.codedontblow.dao.CandidatoDAO;
-import org.codedontblow.gui.DatabaseController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

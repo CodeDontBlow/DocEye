@@ -18,6 +18,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import java.io.IOException;
@@ -99,16 +100,6 @@ public class DatabaseController {
         // Carregar dados do banco de dados ao inicializar a tela
         atualizarTabela();
 
-            if (candidatos.isEmpty()) {
-                showAlert("Atenção", "Nenhum candidato encontrado com o critério especificado.");
-            } else {
-                carregarTabela(candidatos); // Carrega a tabela com os resultados
-            }
-        } else {
-            // Caso o campo esteja vazio, lista todos os candidatos
-            List<Candidato> candidatos = candidatoDAO.listarTodos();
-            carregarTabela(candidatos);
-        }
     }
 
     //Exibe o banco de daods na tabela
@@ -174,7 +165,7 @@ public class DatabaseController {
     }
 
     //Os métodos CRUD, como cadastrar, atualizar e deletar estão abaixo
-   // Metodo para atualizar as informações do candidato
+    // Metodo para atualizar as informações do candidato
     public void atualizarCandidato() {
         if (!campoUniqueID.isBlank()) {
             try {
@@ -255,7 +246,6 @@ public class DatabaseController {
 
     // Limpar campos após as operações de CRUD
     private void clearFields() {
-        campoUniqueID.clear();
         campoNome.clear();
         campoTelefone.clear();
         campoEmail.clear();
@@ -263,7 +253,6 @@ public class DatabaseController {
         campoCompetencias.clear();
         campoIdiomas.clear();
     }
-
 
     //Serve para preencher os campos de textos com informações ao clicar em uma linha na tabela
     private void preencherCampos(Candidato candidato) {
