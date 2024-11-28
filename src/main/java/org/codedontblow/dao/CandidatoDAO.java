@@ -84,7 +84,6 @@ public class CandidatoDAO {
         return candidatos;
     }
 
-
     //Metodo para buscar um candidato específico e mostrá-lo no listView
     public List<Candidato> buscarCandidatos(String query) {
         List<Candidato> candidatos = new ArrayList<>();
@@ -125,46 +124,15 @@ public class CandidatoDAO {
         return candidato_aux;
     }
 
-
+//    public List<Candidato> buscaPorRequisitos(String sql){
+//        List<Candidato> candidatos = new ArrayList<>();
+//
+//        try(PreparedStatement stmt = connection.prepareStatement(sql)){
+//        }
+//        catch ()
+//    }
 
     //Métodos relacionados a busca do candidato
-    // Buscar candidatos pelo ID do candidato
-    public Candidato buscarPorID(int id) {
-        String sql = "SELECT * FROM candidato WHERE UniqueID = ?";
-
-        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-            stmt.setInt(1, id);
-            ResultSet rs = stmt.executeQuery();
-
-            if (rs.next()) {
-                return mapearCandidato(rs);
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException("Erro ao buscar candidato por ID: ", e);
-        }
-        return null;
-    }
-
-
-    // Buscar candidatos pelo nome
-    public List<Candidato> buscarPorNome(String nome) {
-        List<Candidato> candidatos = new ArrayList<>();
-        String sql = "SELECT * FROM candidato WHERE nome LIKE ?";
-
-        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-            stmt.setString(1, "%" + nome + "%");
-            ResultSet rs = stmt.executeQuery();
-
-            while (rs.next()) {
-                candidatos.add(mapearCandidato(rs));
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException("Erro ao buscar candidatos por nome: ", e);
-        }
-        return candidatos;
-    }
-
-
     // Buscar candidatos pela competência do candidato
     public List<Candidato> buscarPorCompetencia(String competencia) {
         List<Candidato> candidatos = new ArrayList<>();
@@ -201,10 +169,6 @@ public class CandidatoDAO {
         return candidatos;
     }
 
-
-
-
-
     public List<Candidato> buscarTodos() {
         List<Candidato> candidatos = new ArrayList<>();
         String sql = "SELECT * FROM Candidato";
@@ -216,7 +180,7 @@ public class CandidatoDAO {
                 Candidato candidato = new Candidato();
                 candidato.setUniqueID(rs.getInt("uniqueID"));
                 candidato.setNome(rs.getString("nome"));
-                candidato.setNumeroTelefone(rs.getString("numeroTelefone"));
+                candidato.setNumeroTelefone(rs.getString("telefone"));
                 candidato.setEmail(rs.getString("email"));
                 candidato.setEndereco(rs.getString("endereco"));
                 candidato.setCompetencias(rs.getString("competencias"));

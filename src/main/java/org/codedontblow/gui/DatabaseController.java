@@ -18,6 +18,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import java.io.IOException;
@@ -36,7 +37,7 @@ public class DatabaseController {
 
     //Campos de texto
     @FXML
-    private TextField campoUniqueID, campoNome, campoTelefone, campoEmail, campoEndereco, campoCompetencias, campoIdiomas, campoBuscar;
+    private TextField campoNome, campoTelefone, campoEmail, campoEndereco, campoCompetencias, campoIdiomas, campoBuscar;
 
 
     //Botões
@@ -61,7 +62,7 @@ public class DatabaseController {
     @FXML
     private TableColumn<Candidato, String> colunaIdiomas;
 
-
+    String campoUniqueID;
 
     //Declaração do objeto candidatoDAO
     private final CandidatoDAO candidatoDAO = new CandidatoDAO();
@@ -76,8 +77,6 @@ public class DatabaseController {
         stage.setScene(scene);
         stage.show();
     }
-
-
 
     //Esse metodo serve para inicializar a tabela
     @FXML
@@ -99,75 +98,11 @@ public class DatabaseController {
         });
 
         // Carregar dados do banco de dados ao inicializar a tela
-        carregarDadosIniciais();
+        atualizarTabela();
 
     }
 
-
-    private void carregarDadosIniciais() {
-        List<Candidato> candidatos = candidatoDAO.listarTodos(); // Busca todos os candidatos no banco de dados
-        carregarTabela(candidatos); // Carrega os dados na tabela
-
-
-    }
-
-
-
-    //Metodo buscar
-    @FXML
-    private void Buscar() {
-        String filtro = campoBuscar.getText().trim(); // Filtra por qualquer critério
-
-        if (!filtro.isEmpty()) {
-            System.out.println("Filtro de busca: " + filtro); // Para depuração
-            List<Candidato> candidatos = new ArrayList<>();
-
-            try {
-                // Tentativa de buscar por ID
-                int id = Integer.parseInt(filtro);
-                Candidato candidato = candidatoDAO.buscarPorID(id); // Metodo que busca por ID
-                if (candidato != null) {
-                    carregarTabela(List.of(candidato));
-                    return;
-                }
-            } catch (NumberFormatException e) {
-                System.out.println("O filtro não é um número. Tentando outros critérios...");
-            }
-
-            // Buscar por Nome
-            List<Candidato> candidatosPorNome = candidatoDAO.buscarPorNome(filtro);
-            if (!candidatosPorNome.isEmpty()) {
-                candidatos.addAll(candidatosPorNome);
-            }
-
-            // Buscar por Competências
-            List<Candidato> candidatosPorCompetencia = candidatoDAO.buscarPorCompetencia(filtro);
-            if (!candidatosPorCompetencia.isEmpty()) {
-                candidatos.addAll(candidatosPorCompetencia);
-            }
-
-            // Buscar por Idiomas
-            List<Candidato> candidatosPorIdioma = candidatoDAO.buscarPorIdioma(filtro);
-            if (!candidatosPorIdioma.isEmpty()) {
-                candidatos.addAll(candidatosPorIdioma);
-            }
-
-            // Remover duplicatas (opcional)
-            candidatos = candidatos.stream().distinct().toList();
-
-            if (candidatos.isEmpty()) {
-                showAlert("Atenção", "Nenhum candidato encontrado com o critério especificado.");
-            } else {
-                carregarTabela(candidatos); // Carrega a tabela com os resultados
-            }
-        } else {
-            // Caso o campo esteja vazio, lista todos os candidatos
-            List<Candidato> candidatos = candidatoDAO.listarTodos();
-            carregarTabela(candidatos);
-        }
-    }
-
-
+    //Exibe o banco de daods na tabela
     private void atualizarTabela() {
         // Implemente este metodo para atualizar os dados da tabela contentTable
         List<Candidato> candidato = candidatoDAO.buscarTodos(); // Supondo que exista um metodo buscarTodos()
@@ -175,36 +110,79 @@ public class DatabaseController {
         contentTable.getItems().addAll(candidato);
     }
 
+    //Metodo buscar
+    @FXML
+    public void buscarCandidato(String s) {
+        //String filtro = campoBuscar.getText().replaceAll("\\s", ""); // Filtra por qualquer critério
+        String filtro = s.replaceAll("\\s", "");
+        long quantidadeRequisitos = filtro.chars().filter(c -> c == ',').count();
+        System.out.println("Filtro de busca: " + filtro); // Para depuração
+
+        if (filtro.isEmpty()){
+            System.out.println("Insira os requisitos no campo.");
+        }
+
+        else if (quantidadeRequisitos > 3){
+            System.out.println("Digite 4 requisitos ou menos!");
+        }
+
+        else{
+            List<Candidato> candidatos = new ArrayList<>();
+
+            String[] requisitos = filtro.split(",");
+
+            String sqlRes = "SELECT * FROM candidatos WHERE";
+
+            for(int i = 0 ; i < requisitos.length ; i++){
+                if(i > 0) sqlRes += " AND";
+                sqlRes += " (competencias LIKE ? OR idiomas LIKE ?)";
+            }
+
+
+
+            System.out.println(sqlRes);
+
+
+//            // Buscar por Competências
+//            List<Candidato> candidatosPorCompetencia = candidatoDAO.buscarPorCompetencia(filtro);
+//            if (!candidatosPorCompetencia.isEmpty()) {
+//                candidatos.addAll(candidatosPorCompetencia);
+//            }
+//
+//            // Buscar por Idiomas
+//            List<Candidato> candidatosPorIdioma = candidatoDAO.buscarPorIdioma(filtro);
+//            if (!candidatosPorIdioma.isEmpty()) {
+//                candidatos.addAll(candidatosPorIdioma);
+//            }
+//
+//            // Remover duplicatas (opcional)
+//            candidatos = candidatos.stream().distinct().toList();
+
+//            if (candidatos.isEmpty()) {
+//                showAlert("Atenção", "Nenhum candidato encontrado com o critério especificado.");
+//            } else {
+//                carregarTabela(candidatos); // Carrega a tabela com os resultados
+//            }
+        }
+//         else {
+//            // Caso o campo esteja vazio, lista todos os candidatos
+//            List<Candidato> candidatos = candidatoDAO.listarTodos();
+//            carregarTabela(candidatos);
+//        }
+    }
 
     private void carregarTabela(List<Candidato> candidatos) {
         ObservableList<Candidato> candidatosObservable = FXCollections.observableArrayList(candidatos);
         contentTable.setItems(candidatosObservable);
     }
 
-
     //Os métodos CRUD, como cadastrar, atualizar e deletar estão abaixo
-    //Metodo para cadastrar os dados no banco
-    public void cadastrar(){
-        Candidato candidato = new Candidato();
-        candidato.setNome(campoNome.getText());
-
-        if (!campoNome.getText().isBlank()) {
-            candidatoDAO.cadastrar(candidato);
-            clearFields();  // Limpa os campos após o cadastro
-        }
-
-        //Esse metodo deve ser chamada ao final dos métodos CRUD para poder atualizar a lista imediatamente
-        //após cada alteração no banco de dados
-
-    }
-
-
-    // Metodo para atualizar as informações do candidato
-    public void atualizar() {
-        if (!campoUniqueID.getText().isBlank()) {
+   // Metodo para atualizar as informações do candidato
+    public void atualizarCandidato() {
+        if (!campoUniqueID.isBlank()) {
             try {
                 //Obtém o ID único
-                int id = Integer.parseInt(campoUniqueID.getText());
+                int id = Integer.parseInt(campoUniqueID);
 
                 // Cria um novo objeto candidato com os dados do formulário
                 Candidato candidato = new Candidato();
@@ -232,13 +210,14 @@ public class DatabaseController {
         } else {
             System.err.println("Erro: O campo ID não pode estar vazio.");
         }
+        atualizarTabela();
     }
 
 
     // Metodo para deletar as informações do candidato
 // Metodo para deletar as informações do candidato
-    public void deletar() {
-        String idText = campoUniqueID.getText().trim();
+    public void deletarCandidato() {
+        String idText = campoUniqueID.trim();
 
         if (idText.isBlank()) {
             System.out.println("Por favor, insira o ID do candidato para deletar.");
@@ -264,6 +243,7 @@ public class DatabaseController {
         } catch (Exception e) {
             System.out.println("Erro ao deletar o candidato: " + e.getMessage());
         }
+        atualizarTabela();
     }
 
 
@@ -278,15 +258,17 @@ public class DatabaseController {
 
     // Limpar campos após as operações de CRUD
     private void clearFields() {
-        campoUniqueID.clear();
         campoNome.clear();
-        campoBuscar.clear();
+        campoTelefone.clear();
+        campoEmail.clear();
+        campoEndereco.clear();
+        campoCompetencias.clear();
+        campoIdiomas.clear();
     }
-
 
     //Serve para preencher os campos de textos com informações ao clicar em uma linha na tabela
     private void preencherCampos(Candidato candidato) {
-        campoUniqueID.setText(String.valueOf(candidato.getUniqueID()));
+        campoUniqueID = String.valueOf(candidato.getUniqueID());
         campoNome.setText(candidato.getNome());
         campoTelefone.setText(String.valueOf(candidato.getNumeroTelefone()));
         campoEmail.setText(String.valueOf(candidato.getEmail()));

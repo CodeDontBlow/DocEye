@@ -8,7 +8,7 @@ public class ConnectionFactory {
     //Senha usada: kali
     public static Connection getConnection(){
         try{
-            return DriverManager.getConnection("jdbc:mysql://localhost:3306/docky", "root", "2#J5E8@s*8$WgokH");
+            return DriverManager.getConnection("jdbc:mysql://localhost:3306/docky", "root", "fatec");
         }
         catch(SQLException excecao){
             throw new RuntimeException(excecao);
