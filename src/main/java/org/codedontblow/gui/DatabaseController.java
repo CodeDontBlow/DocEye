@@ -110,70 +110,58 @@ public class DatabaseController {
         contentTable.getItems().addAll(candidato);
     }
 
-    //Metodo buscar
-    @FXML
-    public void buscarCandidato(String s) {
-        //String filtro = campoBuscar.getText().replaceAll("\\s", ""); // Filtra por qualquer critério
-        String filtro = s.replaceAll("\\s", "");
-        long quantidadeRequisitos = filtro.chars().filter(c -> c == ',').count();
-        System.out.println("Filtro de busca: " + filtro); // Para depuração
-
-        if (filtro.isEmpty()){
-            System.out.println("Insira os requisitos no campo.");
-        }
-
-        else if (quantidadeRequisitos > 3){
-            System.out.println("Digite 4 requisitos ou menos!");
-        }
-
-        else{
-            List<Candidato> candidatos = new ArrayList<>();
-
-            String[] requisitos = filtro.split(",");
-
-            String sqlRes = "SELECT * FROM candidatos WHERE";
-
-            for(int i = 0 ; i < requisitos.length ; i++){
-                if(i > 0) sqlRes += " AND";
-                sqlRes += " (competencias LIKE ? OR idiomas LIKE ?)";
-            }
-
-
-
-            System.out.println(sqlRes);
-
-
-//            // Buscar por Competências
-//            List<Candidato> candidatosPorCompetencia = candidatoDAO.buscarPorCompetencia(filtro);
-//            if (!candidatosPorCompetencia.isEmpty()) {
-//                candidatos.addAll(candidatosPorCompetencia);
-//            }
-//
-//            // Buscar por Idiomas
-//            List<Candidato> candidatosPorIdioma = candidatoDAO.buscarPorIdioma(filtro);
-//            if (!candidatosPorIdioma.isEmpty()) {
-//                candidatos.addAll(candidatosPorIdioma);
-//            }
-//
-//            // Remover duplicatas (opcional)
-//            candidatos = candidatos.stream().distinct().toList();
-
-//            if (candidatos.isEmpty()) {
-//                showAlert("Atenção", "Nenhum candidato encontrado com o critério especificado.");
-//            } else {
-//                carregarTabela(candidatos); // Carrega a tabela com os resultados
-//            }
-        }
-//         else {
-//            // Caso o campo esteja vazio, lista todos os candidatos
-//            List<Candidato> candidatos = candidatoDAO.listarTodos();
-//            carregarTabela(candidatos);
-//        }
-    }
-
+    //Carrega a tabela com candidatos específicos (usado para filtragem)
     private void carregarTabela(List<Candidato> candidatos) {
         ObservableList<Candidato> candidatosObservable = FXCollections.observableArrayList(candidatos);
         contentTable.setItems(candidatosObservable);
+    }
+
+    //Busca candidatos por requisitos
+    @FXML
+    private void buscarCandidato() {
+        String filtro = campoBuscar.getText().trim(); // Filtro do usuario
+        System.out.println("Filtro de busca: " + filtro); // Para depuração
+
+        //Se o filtro estiver vazio, lista todos os candidatos do banco
+        if (filtro.isEmpty()){
+            List<Candidato> candidatos = candidatoDAO.listarTodos();
+            carregarTabela(candidatos);
+        }
+
+        else {
+            String[] requisitos = filtro.split(","); //Cria a Array de requisitos
+            int maxRequisitos = 5; //Define o máximo de 5 requisitos
+            int numeroRequisitos = Math.min(requisitos.length, maxRequisitos); //Define a quantidade de requisitos que serão buscados, com um valor máximo
+            System.out.println("Quantidade de requisitos: " + numeroRequisitos); //Depuração
+
+            //Se o usuario escrever mais que o máximo de requisitos
+            if (requisitos.length > maxRequisitos) {
+                System.out.println("Muitos requisitos. Considerando somente os 4 primeiros");
+            }
+
+            String[] requisitosRes = Arrays.copyOf(requisitos, numeroRequisitos);//Cria um Array novo somente com a quantidade certa de requisitos (importante para caso o usuario digite menos ou mais requisitos do que o valor máximo)
+            String sqlRes = "SELECT * FROM candidato WHERE"; //Cria o código sql
+
+            //Adicionando valores ao código sql para cumprir a demanda de requisitos
+            for (int i = 0; i < numeroRequisitos; i++) {
+                if (i > 0) sqlRes += " AND";
+                sqlRes += " (competencias LIKE ? OR idiomas LIKE ?)";
+            }
+            //Chama envia o sql, os requisitos e a quantidade deles para o método buscarRequisitos
+            List<Candidato> candidatosPorRequisitos = candidatoDAO.buscarRequisitos(sqlRes, requisitosRes, numeroRequisitos);
+            //Se nenhum usuario atender aos requisitos, exibe a tabela toda
+            if(candidatosPorRequisitos.isEmpty()) {
+                System.out.println("Nenhum candidato encontrado");
+                List<Candidato> candidatos = candidatoDAO.listarTodos();
+                carregarTabela(candidatos);
+            }
+            //Se não, carrega a tabela com os candidatos que se enquadraram
+            else{
+                System.out.println("Busca realizada");
+                carregarTabela(candidatosPorRequisitos);
+            }
+
+        }
     }
 
     //Os métodos CRUD, como cadastrar, atualizar e deletar estão abaixo

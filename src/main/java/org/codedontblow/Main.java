@@ -35,8 +35,6 @@ public class Main extends Application{
     }
 
     public static void main(String[] args) {
-        //launch(args);
-        DatabaseController databaseController = new DatabaseController();
-        databaseController.buscarCandidato("ingles, html, css, java, linux, espanhol, contabilidade, administração");
+        launch(args);
     }
 }

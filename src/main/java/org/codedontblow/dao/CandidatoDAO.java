@@ -84,33 +84,6 @@ public class CandidatoDAO {
         return candidatos;
     }
 
-    //Metodo para buscar um candidato específico e mostrá-lo no listView
-    public List<Candidato> buscarCandidatos(String query) {
-        List<Candidato> candidatos = new ArrayList<>();
-        String sql = "SELECT * FROM candidato WHERE nome LIKE ? OR UniqueID = ?";
-
-        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-            stmt.setString(1, "%" + query + "%");
-            try {
-                stmt.setInt(2, Integer.parseInt(query)); // Tenta converter a busca para int (para buscar pelo ID)
-            } catch (NumberFormatException e) {
-                stmt.setInt(2, -1); // Caso não seja um número, evita erro na query
-            }
-
-            ResultSet rs = stmt.executeQuery();
-
-            while (rs.next()) {
-                Candidato candidato = new Candidato();
-                candidato.setUniqueID(rs.getInt("UniqueID"));
-                candidato.setNome(rs.getString("nome"));
-                candidatos.add(candidato);
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException("Erro ao buscar candidatos: ", e);
-        }
-        return candidatos;
-    }
-
     // Metodo auxiliar para mapear o Candidato
     private static Candidato mapearCandidato(ResultSet rs) throws SQLException {
         Candidato candidato_aux = new Candidato();
@@ -124,47 +97,27 @@ public class CandidatoDAO {
         return candidato_aux;
     }
 
-//    public List<Candidato> buscaPorRequisitos(String sql){
-//        List<Candidato> candidatos = new ArrayList<>();
-//
-//        try(PreparedStatement stmt = connection.prepareStatement(sql)){
-//        }
-//        catch ()
-//    }
+    //Método para a busca de candidatos por requisitos
+    public List<Candidato> buscarRequisitos(String sql, String[] requisitos, int numeroRequisitos){
+        List<Candidato> candidatos = new ArrayList<>(); // Iniciando a lista de candidatos que atendem os requisitos
 
-    //Métodos relacionados a busca do candidato
-    // Buscar candidatos pela competência do candidato
-    public List<Candidato> buscarPorCompetencia(String competencia) {
-        List<Candidato> candidatos = new ArrayList<>();
-        String sql = "SELECT * FROM candidato WHERE competencias LIKE ?";
-
-        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-            stmt.setString(1, "%" + competencia + "%");
+        try(PreparedStatement stmt = connection.prepareStatement(sql)){
+            //Loop de repetição que busca todos os requisitos de acordo com a quantidade deles
+            for(int i = 0 ; i < numeroRequisitos ; i++) {
+                stmt.setString(i * 2 + 1, "%" + requisitos[i].trim()+ "%"); //Usa uma função para preencher um campo do stmt
+                stmt.setString(i * 2 + 2, "%" + requisitos[i].trim()+ "%"); //Usa outra função com o mesmo propósito
+                //As funções são usadas para garantir que dois atributos iguais apareçam no sql
+                //A primeira e a segunda aparição de '?' no sqlRes devem conter o mesmo requisito. Portanto, quando i = 0, o esperado é:
+                //stmt.setString(1, requisitos[0]) e stmt.setString(2, requisitos[0]) --> a função faz isso acontecer
+            }
             ResultSet rs = stmt.executeQuery();
 
-            while (rs.next()) {
+            while (rs.next()){
                 candidatos.add(mapearCandidato(rs));
             }
-        } catch (SQLException e) {
-            throw new RuntimeException("Erro ao buscar candidatos por competencia: ", e);
         }
-        return candidatos;
-    }
-
-    // Buscar candidatos pelo idioma
-    public List<Candidato> buscarPorIdioma(String idioma) {
-        List<Candidato> candidatos = new ArrayList<>();
-        String sql = "SELECT * FROM candidato WHERE idiomas LIKE ?";
-
-        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-            stmt.setString(1, "%" + idioma + "%");
-            ResultSet rs = stmt.executeQuery();
-
-            while (rs.next()) {
-                candidatos.add(mapearCandidato(rs));
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException("Erro ao buscar candidatos por idioma: ", e);
+        catch (SQLException e){
+            throw new RuntimeException("Erro ao buscar o candidato por requisito: ", e);
         }
         return candidatos;
     }

@@ -46,11 +46,8 @@ select * from candidato;
 /*Apagar todos os itens da tabela*/
 truncate table candidato;
 
-
 /*Dropar uma tabela e excluí-la do banco de dados. Use com cautela*/
 DROP table candidato;
-DROP table curriculo;
-DROP table boletim;
 
 
 /*Deletar itens de tabelas com alguma característica*/
