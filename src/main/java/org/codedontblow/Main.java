@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import org.codedontblow.dao.CandidatoDAO;
 import org.codedontblow.gui.DatabaseController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,8 +35,6 @@ public class Main extends Application{
     }
 
     public static void main(String[] args) {
-//        launch(args);
-        DatabaseController dbc = new DatabaseController();
-        dbc.busca("Eu, tu, ele, nós, vós, eles");
+        launch(args);
     }
 }

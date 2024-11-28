@@ -125,69 +125,27 @@ public class CandidatoDAO {
         return candidato_aux;
     }
 
-    public List<Candidato> buscarPorRequisito(String sqlQuery){
-        String sql = sqlQuery;
+    //Método para a busca de candidatos por requisitos
+    public List<Candidato> buscarRequisitos(String sql, String[] requisitos, int numeroRequisitos){
+        List<Candidato> candidatos = new ArrayList<>(); // Iniciando a lista de candidatos que atendem os requisitos
 
         try(PreparedStatement stmt = connection.prepareStatement(sql)){
+            //Loop de repetição que busca todos os requisitos de acordo com a quantidade deles
+            for(int i = 0 ; i < numeroRequisitos ; i++) {
+                stmt.setString(i * 2 + 1, "%" + requisitos[i].trim()+ "%"); //Usa uma função para preencher um campo do stmt
+                stmt.setString(i * 2 + 2, "%" + requisitos[i].trim()+ "%"); //Usa outra função com o mesmo propósito
+                //As funções são usadas para garantir que dois atributos iguais apareçam no sql
+                //A primeira e a segunda aparição de '?' no sqlRes devem conter o mesmo requisito. Portanto, quando i = 0, o esperado é:
+                //stmt.setString(1, requisitos[0]) e stmt.setString(2, requisitos[0]) --> a função faz isso acontecer
+            }
+            ResultSet rs = stmt.executeQuery();
 
+            while (rs.next()){
+                candidatos.add(mapearCandidato(rs));
+            }
         }
         catch (SQLException e){
-            System.out.println("Erro na busca: " +e);
-        }
-    }
-
-    //Métodos relacionados a busca do candidato
-    // Buscar candidatos pelo ID do candidato
-    public Candidato buscarPorID(int id) {
-        String sql = "SELECT * FROM candidato WHERE UniqueID = ?";
-
-        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-            stmt.setInt(1, id);
-            ResultSet rs = stmt.executeQuery();
-
-            if (rs.next()) {
-                return mapearCandidato(rs);
-            }
-            throw new RuntimeException("Erro ao buscar candidato por ID: ", e);
-        }
-        return null;
-    }
-
-
-
-} catch (SQLException e) { // Buscar candidatos pelo nome
-    public List<Candidato> buscarPorNome(String nome) {
-        List<Candidato> candidatos = new ArrayList<>();
-        String sql = "SELECT * FROM candidato WHERE nome LIKE ?";
-
-        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-            stmt.setString(1, "%" + nome + "%");
-            ResultSet rs = stmt.executeQuery();
-
-            while (rs.next()) {
-                candidatos.add(mapearCandidato(rs));
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException("Erro ao buscar candidatos por nome: ", e);
-        }
-        return candidatos;
-    }
-
-
-    // Buscar candidatos pela competência do candidato
-    public List<Candidato> buscarPorCompetencia(String competencia) {
-        List<Candidato> candidatos = new ArrayList<>();
-        String sql = "SELECT * FROM candidato WHERE competencias LIKE ?";
-
-        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-            stmt.setString(1, "%" + competencia + "%");
-            ResultSet rs = stmt.executeQuery();
-
-            while (rs.next()) {
-                candidatos.add(mapearCandidato(rs));
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException("Erro ao buscar candidatos por competencia: ", e);
+            throw new RuntimeException("Erro ao buscar o candidato por requisito: ", e);
         }
         return candidatos;
     }
@@ -225,7 +183,7 @@ public class CandidatoDAO {
                 Candidato candidato = new Candidato();
                 candidato.setUniqueID(rs.getInt("uniqueID"));
                 candidato.setNome(rs.getString("nome"));
-                candidato.setNumeroTelefone(rs.getString("numeroTelefone"));
+                candidato.setNumeroTelefone(rs.getString("telefone"));
                 candidato.setEmail(rs.getString("email"));
                 candidato.setEndereco(rs.getString("endereco"));
                 candidato.setCompetencias(rs.getString("competencias"));
@@ -239,10 +197,5 @@ public class CandidatoDAO {
 
         return candidatos;
     }
-
-
-
-
-
 
 }
