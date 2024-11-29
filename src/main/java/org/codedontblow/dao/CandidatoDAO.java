@@ -15,27 +15,7 @@ public class CandidatoDAO {
         this.connection = new ConnectionFactory().getConnection();
     }
 
-
-    //Métodos do CRUD
-    //Create - Criar
-    public void cadastrar(Candidato candidato) {
-        String sql = "INSERT INTO candidato (nome, telefone, email, endereco, competencias, idiomas) VALUES (?, ?, ?, ?, ?, ?)";
-
-        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-            stmt.setString(1, candidato.getNome());
-            stmt.setString(2, candidato.getNumeroTelefone());
-            stmt.setString(3, candidato.getEmail());
-            stmt.setString(4, candidato.getEndereco());
-            stmt.setString(5, candidato.getCompetencias());
-            stmt.setString(6, candidato.getIdiomas());
-            stmt.executeUpdate();
-        } catch (SQLException e) {
-            throw new RuntimeException("Erro ao cadastrar candidato: ", e);
-        }
-    }
-
-
-    //Update - Atualizar
+    //Método para atualizar candidatos
     public void atualizar(Candidato candidato) {
         String sql = "UPDATE candidato SET nome = ?, telefone = ?, email = ?, endereco = ?, competencias = ?, idiomas = ? WHERE UniqueID = ?";
 
@@ -53,8 +33,7 @@ public class CandidatoDAO {
         }
     }
 
-
-    //Delete - deletar
+    //Método para deletar candidatos
     public void deletar(Candidato candidato) {
         String sql = "DELETE FROM candidato WHERE UniqueID = ?";
 
@@ -66,11 +45,10 @@ public class CandidatoDAO {
         }
     }
 
-    //Esse metodo foi adicionado para poder listar o conteúdo dentro do banco de dados
-    //no gerenciador do nosso banco
-    public List<Candidato> listarTodos() {
+    //Método para selecionar todos os candidatos
+    public List<Candidato> selecionarTodos() {
         List<Candidato> candidatos = new ArrayList<>();
-        String sql = "SELECT * FROM candidato";
+        String sql = "SELECT * FROM Candidato";
 
         try (PreparedStatement stmt = connection.prepareStatement(sql);
              ResultSet rs = stmt.executeQuery()) {
@@ -78,51 +56,12 @@ public class CandidatoDAO {
             while (rs.next()) {
                 candidatos.add(mapearCandidato(rs));
             }
+
         } catch (SQLException e) {
-            throw new RuntimeException("Erro ao listar todos os candidatos: ", e);
+            throw new RuntimeException("Erro ao buscar todos os candidatos: ", e);
         }
+
         return candidatos;
-    }
-
-
-    //Metodo para buscar um candidato específico e mostrá-lo no listView
-    public List<Candidato> buscarCandidatos(String query) {
-        List<Candidato> candidatos = new ArrayList<>();
-        String sql = "SELECT * FROM candidato WHERE nome LIKE ? OR UniqueID = ?";
-
-        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-            stmt.setString(1, "%" + query + "%");
-            try {
-                stmt.setInt(2, Integer.parseInt(query)); // Tenta converter a busca para int (para buscar pelo ID)
-            } catch (NumberFormatException e) {
-                stmt.setInt(2, -1); // Caso não seja um número, evita erro na query
-            }
-
-            ResultSet rs = stmt.executeQuery();
-
-            while (rs.next()) {
-                Candidato candidato = new Candidato();
-                candidato.setUniqueID(rs.getInt("UniqueID"));
-                candidato.setNome(rs.getString("nome"));
-                candidatos.add(candidato);
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException("Erro ao buscar candidatos: ", e);
-        }
-        return candidatos;
-    }
-
-    // Metodo auxiliar para mapear o Candidato
-    private static Candidato mapearCandidato(ResultSet rs) throws SQLException {
-        Candidato candidato_aux = new Candidato();
-        candidato_aux.setUniqueID(rs.getInt("UniqueID"));
-        candidato_aux.setNome(rs.getString("nome"));
-        candidato_aux.setNumeroTelefone(rs.getString("telefone"));
-        candidato_aux.setEmail(rs.getString("email"));
-        candidato_aux.setEndereco(rs.getString("endereco"));
-        candidato_aux.setCompetencias(rs.getString("competencias"));
-        candidato_aux.setIdiomas(rs.getString("idiomas"));
-        return candidato_aux;
     }
 
     //Método para a busca de candidatos por requisitos
@@ -150,52 +89,17 @@ public class CandidatoDAO {
         return candidatos;
     }
 
-    // Buscar candidatos pelo idioma
-    public List<Candidato> buscarPorIdioma(String idioma) {
-        List<Candidato> candidatos = new ArrayList<>();
-        String sql = "SELECT * FROM candidato WHERE idiomas LIKE ?";
-
-        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-            stmt.setString(1, "%" + idioma + "%");
-            ResultSet rs = stmt.executeQuery();
-
-            while (rs.next()) {
-                candidatos.add(mapearCandidato(rs));
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException("Erro ao buscar candidatos por idioma: ", e);
-        }
-        return candidatos;
-    }
-
-
-
-
-
-    public List<Candidato> buscarTodos() {
-        List<Candidato> candidatos = new ArrayList<>();
-        String sql = "SELECT * FROM Candidato";
-
-        try (PreparedStatement stmt = connection.prepareStatement(sql);
-             ResultSet rs = stmt.executeQuery()) {
-
-            while (rs.next()) {
-                Candidato candidato = new Candidato();
-                candidato.setUniqueID(rs.getInt("uniqueID"));
-                candidato.setNome(rs.getString("nome"));
-                candidato.setNumeroTelefone(rs.getString("telefone"));
-                candidato.setEmail(rs.getString("email"));
-                candidato.setEndereco(rs.getString("endereco"));
-                candidato.setCompetencias(rs.getString("competencias"));
-                candidato.setIdiomas(rs.getString("idiomas"));
-
-                candidatos.add(candidato);
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException("Erro ao buscar todos os candidatos: ", e);
-        }
-
-        return candidatos;
+    // Metodo auxiliar para selecionar Candidatos
+    private static Candidato mapearCandidato(ResultSet rs) throws SQLException {
+        Candidato candidato_aux = new Candidato();
+        candidato_aux.setUniqueID(rs.getInt("UniqueID"));
+        candidato_aux.setNome(rs.getString("nome"));
+        candidato_aux.setNumeroTelefone(rs.getString("telefone"));
+        candidato_aux.setEmail(rs.getString("email"));
+        candidato_aux.setEndereco(rs.getString("endereco"));
+        candidato_aux.setCompetencias(rs.getString("competencias"));
+        candidato_aux.setIdiomas(rs.getString("idiomas"));
+        return candidato_aux;
     }
 
 }

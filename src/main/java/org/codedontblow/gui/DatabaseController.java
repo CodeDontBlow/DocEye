@@ -22,27 +22,28 @@ import java.util.Arrays;
 import java.util.List;
 
 import java.io.IOException;
+import java.util.Objects;
 
 //Essa classe Controller terá métodos mais complexos, foi criada separadamente do controle de banco de dados para evitar que métodos simples se misturassem com métodos mais difíceis
 //Esse controller controlará o arquivo FXML referente ao Banco de Dados
 public class DatabaseController {
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
 
     //Adicionando variáveis do banco de dados (textField, buttons etc)
     @FXML
     private Label labelCandidato;
 
-
     //Campos de texto
     @FXML
     private TextField campoNome, campoTelefone, campoEmail, campoEndereco, campoCompetencias, campoIdiomas, campoBuscar;
-
+    private int campoUniqueID; //Variável para o id do usuario
 
     //Botões
     @FXML
     private Button btnCadastrar, btnEditar, btnDeletar, btnBuscar;
+
+    @FXML
+    //Textarea para o output
+    private TextArea textareaOutput;
 
     //Elementos da tabela
     @FXML
@@ -62,18 +63,14 @@ public class DatabaseController {
     @FXML
     private TableColumn<Candidato, String> colunaIdiomas;
 
-    String campoUniqueID;
-
     //Declaração do objeto candidatoDAO
     private final CandidatoDAO candidatoDAO = new CandidatoDAO();
 
-
-
     //Troca para a tela de Entrada de Arquivos
     public void trocaTela2(ActionEvent click) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/org/codedontblow/EntradaArquivos.fxml"));
-        stage = (Stage)((Node)click.getSource()).getScene().getWindow();
-        scene = new Scene(root);
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/org/codedontblow/EntradaArquivos.fxml")));
+        Stage stage = (Stage) ((Node) click.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
@@ -89,29 +86,26 @@ public class DatabaseController {
         colunaCompetencias.setCellValueFactory(new PropertyValueFactory<>("competencias"));
         colunaIdiomas.setCellValueFactory(new PropertyValueFactory<>("idiomas"));
 
-
         // Adicionar listener para selecionar linha e preencher campos
         contentTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
                 preencherCampos(newSelection);
             }
         });
-
         // Carregar dados do banco de dados ao inicializar a tela
-        atualizarTabela();
-
+        carregarTabela();
     }
 
     //Exibe o banco de daods na tabela
-    private void atualizarTabela() {
+    private void carregarTabela() {
         // Implemente este metodo para atualizar os dados da tabela contentTable
-        List<Candidato> candidato = candidatoDAO.buscarTodos(); // Supondo que exista um metodo buscarTodos()
+        List<Candidato> candidato = candidatoDAO.selecionarTodos(); // Supondo que exista um metodo buscarTodos()
         contentTable.getItems().clear();
         contentTable.getItems().addAll(candidato);
     }
 
     //Carrega a tabela com candidatos específicos (usado para filtragem)
-    private void carregarTabela(List<Candidato> candidatos) {
+    private void atualizarTabela(List<Candidato> candidatos) {
         ObservableList<Candidato> candidatosObservable = FXCollections.observableArrayList(candidatos);
         contentTable.setItems(candidatosObservable);
     }
@@ -124,8 +118,7 @@ public class DatabaseController {
 
         //Se o filtro estiver vazio, lista todos os candidatos do banco
         if (filtro.isEmpty()){
-            List<Candidato> candidatos = candidatoDAO.listarTodos();
-            carregarTabela(candidatos);
+            carregarTabela();
         }
 
         else {
@@ -136,116 +129,97 @@ public class DatabaseController {
 
             //Se o usuario escrever mais que o máximo de requisitos
             if (requisitos.length > maxRequisitos) {
-                System.out.println("Muitos requisitos. Considerando somente os 4 primeiros");
+                System.out.println("Muitos requisitos. Considerando somente os " + maxRequisitos + " primeiros");
             }
 
             String[] requisitosRes = Arrays.copyOf(requisitos, numeroRequisitos);//Cria um Array novo somente com a quantidade certa de requisitos (importante para caso o usuario digite menos ou mais requisitos do que o valor máximo)
-            String sqlRes = "SELECT * FROM candidato WHERE"; //Cria o código sql
+            StringBuilder sqlRes = new StringBuilder("SELECT * FROM candidato WHERE"); //Cria o código sql
 
             //Adicionando valores ao código sql para cumprir a demanda de requisitos
             for (int i = 0; i < numeroRequisitos; i++) {
-                if (i > 0) sqlRes += " AND";
-                sqlRes += " (competencias LIKE ? OR idiomas LIKE ?)";
+                if (i > 0) sqlRes.append(" AND");
+                sqlRes.append(" (competencias LIKE ? OR idiomas LIKE ?)");
             }
             //Chama envia o sql, os requisitos e a quantidade deles para o método buscarRequisitos
-            List<Candidato> candidatosPorRequisitos = candidatoDAO.buscarRequisitos(sqlRes, requisitosRes, numeroRequisitos);
+            List<Candidato> candidatosPorRequisitos = candidatoDAO.buscarRequisitos(sqlRes.toString(), requisitosRes, numeroRequisitos);
+
             //Se nenhum usuario atender aos requisitos, exibe a tabela toda
             if(candidatosPorRequisitos.isEmpty()) {
                 System.out.println("Nenhum candidato encontrado");
-                List<Candidato> candidatos = candidatoDAO.listarTodos();
-                carregarTabela(candidatos);
+                textareaOutput.setText("Nenhum candidato foi encontrado com os requisitos fornecidos. Exibindo todos os candidatos.");
+                carregarTabela();
             }
             //Se não, carrega a tabela com os candidatos que se enquadraram
             else{
                 System.out.println("Busca realizada");
-                carregarTabela(candidatosPorRequisitos);
+                textareaOutput.setText("Exibindo candidatos que se enquadrem nos requisitos!");
+                atualizarTabela(candidatosPorRequisitos);
             }
 
         }
     }
 
-    //Os métodos CRUD, como cadastrar, atualizar e deletar estão abaixo
+    //Os métodos CRUD, atualizar e deletar estão abaixo
     // Metodo para atualizar as informações do candidato
     public void atualizarCandidato() {
-        if (!campoUniqueID.isBlank()) {
-            try {
-                //Obtém o ID único
-                int id = Integer.parseInt(campoUniqueID);
-
-                // Cria um novo objeto candidato com os dados do formulário
-                Candidato candidato = new Candidato();
-                candidato.setUniqueID(id);
-                candidato.setNome(campoNome.getText());
-                candidato.setNumeroTelefone(campoTelefone.getText());
-                candidato.setEmail(campoEmail.getText());
-                candidato.setEndereco(campoEndereco.getText());
-                candidato.setCompetencias(campoCompetencias.getText());
-                candidato.setIdiomas(campoIdiomas.getText());
-
-                // Chama o metodo para atualizar no DAO
-                candidatoDAO.atualizar(candidato);
-
-                // Limpa os campos após a atualização
-                clearFields();
-
-                // Mensagem de sucesso (opcional)
-                System.out.println("Candidato atualizado com sucesso!");
-            } catch (NumberFormatException e) {
-                System.err.println("Erro: O campo ID deve conter um número válido.");
-            } catch (Exception e) {
-                System.err.println("Erro ao atualizar o candidato: " + e.getMessage());
-            }
-        } else {
-            System.err.println("Erro: O campo ID não pode estar vazio.");
-        }
-        atualizarTabela();
-    }
-
-
-    // Metodo para deletar as informações do candidato
-// Metodo para deletar as informações do candidato
-    public void deletarCandidato() {
-        String idText = campoUniqueID.trim();
-
-        if (idText.isBlank()) {
-            System.out.println("Por favor, insira o ID do candidato para deletar.");
-            return;
-        }
-
         try {
-            int id = Integer.parseInt(idText);
+            //Obtém o ID único
+            int id = campoUniqueID;
+
+            // Cria um novo objeto candidato com os dados do formulário
             Candidato candidato = new Candidato();
             candidato.setUniqueID(id);
+            candidato.setNome(campoNome.getText());
+            candidato.setNumeroTelefone(campoTelefone.getText());
+            candidato.setEmail(campoEmail.getText());
+            candidato.setEndereco(campoEndereco.getText());
+            candidato.setCompetencias(campoCompetencias.getText());
+            candidato.setIdiomas(campoIdiomas.getText());
 
+            // Chama o metodo para atualizar no DAO
+            candidatoDAO.atualizar(candidato);
+
+            // Limpa os campos após a atualização
+            limparCampos();
+            carregarTabela();
+
+            // Mensagens de sucesso
+            System.out.println("Candidato atualizado com sucesso!");
+            textareaOutput.setText("Candidato " + candidato.getNome() + " atualizado com sucesso!");
+        }
+        catch (Exception e) {
+            System.err.println("Erro ao atualizar o candidato: " + e.getMessage());
+            textareaOutput.setText("Algo deu errado na atualização deste candidato");
+        }
+
+    }
+
+    // Metodo para deletar as informações do candidato
+    public void deletarCandidato() {
+        int id = campoUniqueID;
+
+        Candidato candidato = new Candidato();
+        candidato.setUniqueID(id);
+
+        try{
             // Chama o DAO para excluir o candidato
             candidatoDAO.deletar(candidato);
-            System.out.println("Candidato deletado com sucesso!");
+            textareaOutput.setText("Candidato deletado com sucesso!");
 
             // Limpa os campos após a exclusão
-            clearFields();
-
-            // Atualiza a lista após a exclusão
-
-        } catch (NumberFormatException e) {
-            System.out.println("O ID informado não é válido. Insira um número inteiro.");
-        } catch (Exception e) {
-            System.out.println("Erro ao deletar o candidato: " + e.getMessage());
+            limparCampos();
+            carregarTabela();
         }
-        atualizarTabela();
+
+        catch (Exception e) {
+            System.out.println("Erro ao deletar o candidato: " + e.getMessage());
+            textareaOutput.setText("Algo deu errado na atualização deste candidato");
+        }
     }
 
-
-    // Outros methods
-
-    private void showAlert(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(title);
-        alert.setContentText(message);
-        alert.showAndWait();
-    }
-
+    // Outros Métodos
     // Limpar campos após as operações de CRUD
-    private void clearFields() {
+    private void limparCampos() {
         campoNome.clear();
         campoTelefone.clear();
         campoEmail.clear();
@@ -256,7 +230,7 @@ public class DatabaseController {
 
     //Serve para preencher os campos de textos com informações ao clicar em uma linha na tabela
     private void preencherCampos(Candidato candidato) {
-        campoUniqueID = String.valueOf(candidato.getUniqueID());
+        campoUniqueID = candidato.getUniqueID();
         campoNome.setText(candidato.getNome());
         campoTelefone.setText(String.valueOf(candidato.getNumeroTelefone()));
         campoEmail.setText(String.valueOf(candidato.getEmail()));

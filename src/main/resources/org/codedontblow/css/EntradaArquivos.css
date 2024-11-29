@@ -1,3 +1,8 @@
+.text-area{
+    -fx-highlight-fill: null;
+    -fx-highlight-text-fill: null;
+}
+
 .text-area .scroll-pane {
     -fx-background-color: transparent;
 }
