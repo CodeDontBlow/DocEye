@@ -28,7 +28,7 @@ public class InsertSQL{
 
             //Tratamento do output do Llava. Separando os atributos de cada linha
             for (String linha : linhas) {
-                String[] atributos = linha.split(",");
+                String[] atributos = linha.split(";");
 
                 stmtCandidato.setString(1, atributos[0]); //Nome do Candidato
                 stmtCandidato.executeUpdate(); //Executando a Inserção dos Dados do Candidato
