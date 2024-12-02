@@ -129,6 +129,10 @@ Ferramentas e plataformas aplicadas no desenvolvimento do projeto:
 - **MySQL**: Banco de dados utilizado no projeto.
 - **Git**: Para clonar o repositório.
 - **IDE**: Como IntelliJ IDEA ou NetBeans.
+- **MySQL**: Workbench (opcional, mas recomendado para gerenciar o banco de dados)
+- **Tess4J**: Biblioteca para integrar o Tesseract ao Java, permitindo realizar o OCR.
+- **Tesseract OCR**: Ferramenta de OCR para extração de texto a partir de imagens.
+- **JavaFX**: Framework para a criação de interfaces gráficas de usuário (GUI).
 
 <!-- ### Passos de Instalação: -->
 
