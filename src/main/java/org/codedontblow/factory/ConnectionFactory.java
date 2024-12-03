@@ -4,7 +4,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionFactory {
-    public Connection getConnection(){
+
+    //Senha usada: kali
+    public static Connection getConnection(){
         try{
             return DriverManager.getConnection("jdbc:mysql://localhost:3306/docky", "root", "bdLapms@1711");
         }

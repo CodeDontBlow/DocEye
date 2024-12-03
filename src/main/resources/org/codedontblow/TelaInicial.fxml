@@ -26,7 +26,7 @@
       </Label>
       <ImageView fx:id="myImageView" fitHeight="300.0" fitWidth="300.0" layoutX="632.0" layoutY="208.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@logovet.png" />
+            <Image url="@img/logovet.png" />
          </image>
       </ImageView>
       <Label layoutX="20.0" layoutY="663.0" text="\@2024CodeDontBlow" textFill="WHITE">
@@ -42,7 +42,7 @@
       <BorderPane prefHeight="103.0" prefWidth="1000.0" style="-fx-background-color: #1C1C20;" />
       <ImageView fitHeight="79.0" fitWidth="79.0" layoutX="907.0" layoutY="624.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@logo2preta.png" />
+            <Image url="@img/logo2preta.png" />
          </image>
       </ImageView>
     </children>
