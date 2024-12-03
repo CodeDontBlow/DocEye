@@ -1,4 +1,4 @@
-package org.codedontblow.GUI;
+package org.codedontblow.gui;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
