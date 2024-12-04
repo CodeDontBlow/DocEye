@@ -25,14 +25,14 @@ Muitas empresas lidam com milhares de documentos diariamente, como currículos, 
 | 01                | 09/09/2024 | Concluído |
 | 02                | 30/09/2024 | Concluído     |
 | 03                | 21/10/2024 | Concluído      |
-| 04                | 11/11/2024 | A fazer      |
+| 04                | 11/11/2024 | Concluído    |
 | Feira de Soluções | 12/12/2024 | A fazer      |
 
 ---
 
 ## 📚 MVP (Minimum Viable Product)
-**DocEye** é um software de extração de informações desenvolvido para automatizar e otimizar _processos seletivos_, facilitando a análise de documentos como currículos e boletins acadêmicos. Seu principal objetivo é transformar informações não estruturadas, como texto em arquivos PDF ou imagens, em dados organizados e de fácil acesso para recrutadores e gestores de recursos humanos.
-<br> _Descrição_: O DocEye utiliza tecnologias para identificar e extrair informações essenciais dos documentos, como nome, contato, competências, e histórico de notas. Esses dados são processados e apresentados em um formato estruturado, permitindo aos profissionais responsáveis pela seleção filtrarem candidatos de forma rápida e eficiente.
+**DocEye** é um software de extração de informações desenvolvido para automatizar e otimizar _processos seletivos_, facilitando a análise de documentos como os currículos. Seu principal objetivo é transformar informações não estruturadas, como texto em arquivos PDF ou imagens, em dados organizados e de fácil acesso para recrutadores e gestores de recursos humanos.
+<br> _Descrição_: O DocEye utiliza tecnologias para identificar e extrair informações essenciais dos documentos, como nome, contato e competências. Esses dados são processados e apresentados em um formato estruturado, permitindo aos profissionais responsáveis pela seleção filtrarem candidatos de forma rápida e eficiente.
 <!-- <br> Acesse o link para visualizar o <a href= "https://www.figma.com/design/cK5bG9Pws6F5LTYGKAlwJ6/Prot%C3%B3tipo-API-2?node-id=0-1&node-type=canvas&t=jx5W8A6itDAJyiTB-0"> Protótipo DocEye! </a>  </br> -->
 
 ---
@@ -53,6 +53,8 @@ https://github.com/user-attachments/assets/11b7606e-483b-46ff-addb-7474e2a48734
 
 https://github.com/user-attachments/assets/8b01aa03-7700-40de-b9e9-e6c667162a6f
 
+
+### Sprint 4
 
 
 ---
