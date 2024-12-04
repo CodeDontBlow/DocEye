@@ -66,7 +66,7 @@ https://github.com/user-attachments/assets/8b01aa03-7700-40de-b9e9-e6c667162a6f
 ---
 
 ## 📈 Burndown 
-<img src="docs/registros/Burndown.jpg" alt="Burndown" style="width: 70%;"/>
+<img src="docs/registros/burndown_sprint4.png" alt="Burndown" style="width: 70%;"/>
 
 ---
 
