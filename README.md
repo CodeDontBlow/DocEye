@@ -56,6 +56,10 @@ https://github.com/user-attachments/assets/8b01aa03-7700-40de-b9e9-e6c667162a6f
 
 ### Sprint 4
 
+https://github.com/user-attachments/assets/cfbeafe9-02f1-4d6c-96b3-4dd9c57c8d21
+
+
+
 
 ---
 
@@ -109,7 +113,7 @@ https://github.com/user-attachments/assets/8b01aa03-7700-40de-b9e9-e6c667162a6f
 |   8   | Média | Como usuário, ter um modelo de inteligência artificial exclusivo da aplicação, para ter uma resposta ideal na extração | 18 | 3 |
 |   9   | Média | Como usuário, fazer filtragem dos currículos cadastrados no banco de dados, baseado em requisitos | 8 | 4 |
 |  10   | Baixa | Como usuário, ter garantia na segurança dos dados extraídos, para evitar ataques | 3 | 4 |
-|  11   | Baixa | Como usuário, ter um guia de instalação detalhado, para clarificar o processo de iniciação da aplicação | 18 | 4 |
+|  11   | Baixa | Como usuário, ter um manual detalhado, para entender o funcionamento completo do software | 18 | 4 |
 
 </div>
 
