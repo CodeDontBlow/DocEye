@@ -132,7 +132,6 @@ O sistema será baseado em uma arquitetura de **camadas**, onde cada parte desem
 ## 🛠️ Tecnologias Utilizadas
 
 Ferramentas e plataformas aplicadas no desenvolvimento do projeto:
-<!-- COLOCAR OS ICONES -->
 - Figma 🎨 
 - Git e GitHub 🐙
 - IntelliJ IDEA 🖥️
@@ -147,7 +146,7 @@ Ferramentas e plataformas aplicadas no desenvolvimento do projeto:
 ---
 
 
-## 📋 Como Instalar e Executar o Projeto
+## 📋 Para Executar o Projeto
 
 ### Pré-requisitos:
 
@@ -155,7 +154,6 @@ Ferramentas e plataformas aplicadas no desenvolvimento do projeto:
 - **MySQL**: Banco de dados utilizado no projeto.
 - **Git**: Para clonar o repositório.
 - **IDE**: Como IntelliJ IDEA ou NetBeans.
-- **MySQL**: Workbench (opcional, mas recomendado para gerenciar o banco de dados)
 - **Tess4J**: Biblioteca para integrar o Tesseract ao Java, permitindo realizar o OCR.
 - **Tesseract OCR**: Ferramenta de OCR para extração de texto a partir de imagens.
 - **JavaFX**: Framework para a criação de interfaces gráficas de usuário (GUI).
