@@ -114,7 +114,6 @@ public class DatabaseController {
     @FXML
     private void buscarCandidato() {
         String filtro = campoBuscar.getText().trim(); // Filtro do usuario
-        System.out.println("Filtro de busca: " + filtro); // Para depuração
 
         //Se o filtro estiver vazio, lista todos os candidatos do banco
         if (filtro.isEmpty()){
@@ -125,12 +124,6 @@ public class DatabaseController {
             String[] requisitos = filtro.split(","); //Cria a Array de requisitos
             int maxRequisitos = 5; //Define o máximo de 5 requisitos
             int numeroRequisitos = Math.min(requisitos.length, maxRequisitos); //Define a quantidade de requisitos que serão buscados, com um valor máximo
-            System.out.println("Quantidade de requisitos: " + numeroRequisitos); //Depuração
-
-            //Se o usuario escrever mais que o máximo de requisitos
-            if (requisitos.length > maxRequisitos) {
-                System.out.println("Muitos requisitos. Considerando somente os " + maxRequisitos + " primeiros");
-            }
 
             String[] requisitosRes = Arrays.copyOf(requisitos, numeroRequisitos);//Cria um Array novo somente com a quantidade certa de requisitos (importante para caso o usuario digite menos ou mais requisitos do que o valor máximo)
             StringBuilder sqlRes = new StringBuilder("SELECT * FROM candidato WHERE"); //Cria o código sql
@@ -145,13 +138,11 @@ public class DatabaseController {
 
             //Se nenhum usuario atender aos requisitos, exibe a tabela toda
             if(candidatosPorRequisitos.isEmpty()) {
-                System.out.println("Nenhum candidato encontrado");
                 textareaOutput.setText("Nenhum candidato foi encontrado com os requisitos fornecidos. Exibindo todos os candidatos.");
                 carregarTabela();
             }
             //Se não, carrega a tabela com os candidatos que se enquadraram
             else{
-                System.out.println("Busca realizada");
                 textareaOutput.setText("Exibindo candidatos que se enquadrem nos requisitos!");
                 atualizarTabela(candidatosPorRequisitos);
             }
@@ -184,11 +175,9 @@ public class DatabaseController {
             carregarTabela();
 
             // Mensagens de sucesso
-            System.out.println("Candidato atualizado com sucesso!");
             textareaOutput.setText("Candidato " + candidato.getNome() + " atualizado com sucesso!");
         }
         catch (Exception e) {
-            System.err.println("Erro ao atualizar o candidato: " + e.getMessage());
             textareaOutput.setText("Algo deu errado na atualização deste candidato");
         }
 
@@ -212,7 +201,6 @@ public class DatabaseController {
         }
 
         catch (Exception e) {
-            System.out.println("Erro ao deletar o candidato: " + e.getMessage());
             textareaOutput.setText("Algo deu errado na atualização deste candidato");
         }
     }

@@ -12,7 +12,7 @@ public class TesseractOCR {
 
         try {
             // Defina o caminho para a pasta tessdata
-            tesseract.setDatapath("C:\\Program Files\\Tesseract-OCR\\tessdata");
+            tesseract.setDatapath("D:\\Tesseract-OCR\\tessdata");
 
             return tesseract.doOCR(new File(filePath));
 
