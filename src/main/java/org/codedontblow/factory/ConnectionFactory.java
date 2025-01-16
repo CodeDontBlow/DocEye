@@ -5,10 +5,10 @@ import java.sql.SQLException;
 
 public class ConnectionFactory {
 
-    //Senha usada: kali
+    //Senha usada: fatec
     public static Connection getConnection(){
         try{
-            return DriverManager.getConnection("jdbc:mysql://localhost:3306/docky", "root", "fatec");
+            return DriverManager.getConnection("jdbc:mysql://localhost:3306/docky", "root", "2#J5E8@s*8$WgokH");
         }
         catch(SQLException excecao){
             throw new RuntimeException(excecao);
