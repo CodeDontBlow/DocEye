@@ -31,12 +31,11 @@
       <Label fx:id="labelCandidato" layoutX="122.0" layoutY="186.0" text="Candidato" textFill="WHITE" />
       <TextField fx:id="campoID_candidato" layoutX="63.0" layoutY="228.0" promptText="ID do Candidato" />
       <TextField fx:id="campoNome" layoutX="63.0" layoutY="289.0" promptText="Nome" />
-      <Button fx:id="btnCadastrar" layoutX="115.0" layoutY="428.0" mnemonicParsing="false" onAction="#cadastrar" text="Cadastrar" />
       <Label layoutX="408.0" layoutY="130.0" text="Buscar" textFill="WHITE" />
       <TextField fx:id="campoBuscar" layoutX="517.0" layoutY="125.0" promptText="Buscar candidato" />
-      <Button fx:id="btnEditar" layoutX="812.0" layoutY="125.0" mnemonicParsing="false" onAction="#atualizar" text="Editar" />
-      <Button fx:id="btnDeletar" layoutX="894.0" layoutY="125.0" mnemonicParsing="false" onAction="#deletar" text="Deletar" />
+      <Button fx:id="btnEditar" layoutX="812.0" layoutY="125.0" mnemonicParsing="false" onAction="#atualizarCandidato" text="Editar" />
+      <Button fx:id="btnDeletar" layoutX="894.0" layoutY="125.0" mnemonicParsing="false" onAction="#deletarCandidato" text="Deletar" />
       <ListView fx:id="listViewCandidatos" layoutX="365.0" layoutY="228.0" prefHeight="408.0" prefWidth="604.0" />
-      <Button fx:id="btnBuscar" layoutX="728.0" layoutY="125.0" mnemonicParsing="false" onAction="#buscar" text="Buscar" />
+      <Button fx:id="btnBuscar" layoutX="728.0" layoutY="125.0" mnemonicParsing="false" onAction="#buscarCandidato" text="Buscar" />
     </children>
 </AnchorPane>

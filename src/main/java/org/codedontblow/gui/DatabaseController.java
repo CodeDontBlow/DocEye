@@ -61,7 +61,6 @@ public class DatabaseController {
     private TableColumn<Candidato, String> colunaCompetencias;
     @FXML
     private TableColumn<Candidato, String> colunaIdiomas;
-
     //Declaração do objeto candidatoDAO
     private final CandidatoDAO candidatoDAO = new CandidatoDAO();
 
