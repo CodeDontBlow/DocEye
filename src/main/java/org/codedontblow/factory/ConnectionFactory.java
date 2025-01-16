@@ -8,7 +8,7 @@ public class ConnectionFactory {
     //Senha usada: fatec
     public static Connection getConnection(){
         try{
-            return DriverManager.getConnection("jdbc:mysql://localhost:3306/docky", "root", "2#J5E8@s*8$WgokH");
+            return DriverManager.getConnection("jdbc:mysql://localhost:3306/docky", "root", "senha_do_seu_banco_dados");
         }
         catch(SQLException excecao){
             throw new RuntimeException(excecao);
