@@ -26,7 +26,7 @@ Muitas empresas lidam com milhares de documentos diariamente, como currículos, 
 | 02                | 30/09/2024 | Concluído     |
 | 03                | 21/10/2024 | Concluído      |
 | 04                | 11/11/2024 | Concluído    |
-| Feira de Soluções | 12/12/2024 | A fazer      |
+| Feira de Soluções | 12/12/2024 | Concluído      |
 
 ---
 
@@ -59,18 +59,11 @@ https://github.com/user-attachments/assets/8b01aa03-7700-40de-b9e9-e6c667162a6f
 https://github.com/user-attachments/assets/cfbeafe9-02f1-4d6c-96b3-4dd9c57c8d21
 
 
-
-
 ---
 
 
 ## 🛤️ Roadmap
 <img src="docs/registros/Roadmap.png" alt="Roadmap" style="width: 70%;"/>
-
----
-
-## 📈 Burndown 
-<img src="docs/registros/burndown_sprint4.png" alt="Burndown" style="width: 70%;"/>
 
 ---
 
@@ -157,11 +150,6 @@ Ferramentas e plataformas aplicadas no desenvolvimento do projeto:
 - **Tess4J**: Biblioteca para integrar o Tesseract ao Java, permitindo realizar o OCR.
 - **Tesseract OCR**: Ferramenta de OCR para extração de texto a partir de imagens.
 - **JavaFX**: Framework para a criação de interfaces gráficas de usuário (GUI).
-
-<!-- ### Passos de Instalação: -->
-
-
-
 
 ---
 
